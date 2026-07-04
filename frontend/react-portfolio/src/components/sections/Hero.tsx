@@ -7,10 +7,8 @@ import { personalInfo } from '../../data/personalInfo';
 const ROLES = [
   "Data Analyst",
   "Business Intelligence Developer",
-  "SQL Developer",
   "Power BI Developer",
-  "Python Developer",
-  "MERN Stack Developer"
+  "MERN & AI Enthusiast"
 ];
 
 const containerVariants = {
