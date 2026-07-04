@@ -38,7 +38,7 @@ export default function FAQ() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter"
         >
-          Frequently Asked <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Questions</span>
+          Frequently Asked <span className="text-primary">Questions</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export default function FAQ() {
               transition={{ duration: 0.4, delay: idx * 0.1 }}
               className={clsx(
                 "glass-card rounded-[24px] overflow-hidden transition-colors duration-300",
-                isOpen ? "border-primary/50 shadow-[0_0_30px_rgba(168,85,247,0.15)] bg-black/60" : "hover:border-white/20 hover:bg-black/40 bg-black/20"
+                isOpen ? "border-primary/50 shadow-md bg-black/60" : "hover:border-white/20 hover:bg-black/40 bg-black/20"
               )}
             >
               <button 

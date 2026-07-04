@@ -35,7 +35,7 @@ export default function DevelopmentProcess() {
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 className="flex flex-col items-center min-w-[140px] text-center snap-center group"
               >
-                <div className="w-16 h-16 rounded-full bg-cards border border-borders flex items-center justify-center text-text-secondary group-hover:text-primary group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all mb-4 relative">
+                <div className="w-16 h-16 rounded-full bg-cards border border-borders flex items-center justify-center text-text-secondary group-hover:text-primary group-hover:border-primary/50 group-hover:shadow-md transition-all mb-4 relative">
                   <Icon size={24} />
                   {/* Decorative dot for the timeline line */}
                   <div className="hidden md:block absolute -right-2 top-1/2 w-4 h-4 bg-background border-2 border-borders rounded-full -translate-y-1/2 translate-x-full z-0" />

@@ -20,10 +20,10 @@ export default function Certifications() {
         
         <div className="text-center">
           <div className="inline-block mb-4">
-            <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">Credentials</span>
+            <span className="font-caveat text-2xl text-primary transform -rotate-2 inline-block">Credentials</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter">
-            Professional <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-secondary">Certifications</span>
+            Professional <span className="text-primary">Certifications</span>
           </h2>
           <p className="text-text-secondary text-lg font-light max-w-2xl mx-auto">
             Continuous learning and credentials demonstrating my commitment to mastering modern technologies.
@@ -64,7 +64,7 @@ export default function Certifications() {
                 
                 {/* Date / Issuer Label */}
                 <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-text-secondary">
-                  <span className="text-secondary">{cert.issuer}</span>
+                  <span className="text-primary">{cert.issuer}</span>
                   {cert.issueDate && (
                     <>
                       <span className="w-1 h-1 rounded-full bg-white/20" />

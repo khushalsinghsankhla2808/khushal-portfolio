@@ -3,12 +3,12 @@ import { skillCategories } from '../../data/skills';
 
 // Map categories to specific dot colors for the pill cloud
 const categoryColors: Record<string, string> = {
-  "Programming": "bg-primary shadow-[0_0_8px_rgba(59,130,246,0.8)]",
-  "Business Intelligence": "bg-secondary shadow-[0_0_8px_rgba(34,211,238,0.8)]",
-  "Databases": "bg-accent shadow-[0_0_8px_rgba(168,85,247,0.8)]",
-  "Data Analytics": "bg-success shadow-[0_0_8px_rgba(34,197,94,0.8)]",
-  "MERN Stack": "bg-warning shadow-[0_0_8px_rgba(245,158,11,0.8)]",
-  "Tools": "bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+  "Programming": "bg-primary",
+  "Business Intelligence": "bg-secondary",
+  "Databases": "bg-accent",
+  "Data Analytics": "bg-success",
+  "MERN Stack": "bg-warning",
+  "Tools": "bg-white"
 };
 
 // Flatten skills and assign properties for visual rhythm
@@ -43,7 +43,7 @@ export default function Skills() {
             <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">My Toolkit</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white">
-            Technologies & <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">Skills</span>
+            Technologies & <span className="text-primary">Skills</span>
           </h2>
           <p className="text-text-secondary text-lg font-light max-w-2xl mx-auto">
             A comprehensive overview of the tools, languages, and frameworks I use to transform data into decisions and build scalable applications.
@@ -70,9 +70,8 @@ export default function Skills() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ 
                 delay: (idx % 15) * 0.05, 
-                type: "spring", 
-                stiffness: 100,
-                damping: 15
+                duration: 0.6,
+                ease: "easeOut"
               }}
               whileHover={{ scale: 1.05, y: -2 }}
               className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/3 border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all cursor-default ${skill.textSize} ${skill.fontWeight} text-text-primary`}

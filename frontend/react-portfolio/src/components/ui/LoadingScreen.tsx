@@ -41,8 +41,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       >
         <img 
           src="/logo.png" 
-          alt="Khushal Singh Sankhla" 
-          className="h-14 md:h-20 w-auto object-contain drop-shadow-[0_0_30px_rgba(168,85,247,0.4)]" 
+          className="h-14 md:h-20 w-auto object-contain" 
         />
       </motion.div>
       
@@ -54,7 +53,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         </div>
         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden relative">
           <motion.div 
-            className="absolute top-0 left-0 h-full bg-linear-to-r from-primary via-accent to-secondary"
+            className="absolute top-0 left-0 h-full bg-primary"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ ease: "linear", duration: 0.2 }}

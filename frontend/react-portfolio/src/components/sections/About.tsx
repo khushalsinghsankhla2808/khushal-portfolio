@@ -17,7 +17,7 @@ export default function About() {
               <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">The Evolution</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
-              Bridging <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Insight</span> and <span className="text-transparent bg-clip-text bg-linear-to-r from-accent to-secondary">Action</span>
+              Bridging <span className="text-primary">Insight</span> and <span className="text-primary">Action</span>
             </h2>
             
             <div className="space-y-6 text-text-secondary text-lg leading-relaxed font-light">
@@ -47,7 +47,6 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="col-span-2 glass-card rounded-3xl p-6 border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-colors"
           >
-            <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="text-xs uppercase tracking-widest text-primary font-bold mb-2 block">Creative Sanctuary</span>
             <h3 className="text-xl font-bold text-white mb-2">Cricket & Community</h3>
             <p className="text-sm text-text-secondary font-light">Active in open-source communities and finding balance on the cricket pitch.</p>
@@ -73,9 +72,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="col-span-1 glass-card rounded-3xl p-6 border border-white/5 flex items-center justify-center text-center hover:border-accent/30 transition-colors bg-linear-to-br from-white/5 to-transparent"
+            className="col-span-1 glass-card rounded-3xl p-6 border border-white/5 flex items-center justify-center text-center hover:border-primary/30 transition-colors"
           >
-            <p className="text-lg font-bold text-transparent bg-clip-text bg-linear-to-b from-white to-text-secondary">
+            <p className="text-lg font-bold text-white">
               "Curious by default, structured by habit."
             </p>
           </motion.div>
@@ -85,7 +84,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="col-span-2 glass-card rounded-3xl p-8 border border-white/5 bg-linear-to-r from-primary/10 via-transparent to-transparent relative overflow-hidden"
+            className="col-span-2 glass-card rounded-3xl p-8 border border-white/5 relative overflow-hidden"
           >
             <div className="absolute -left-4 -top-4 text-primary/20 font-serif text-8xl leading-none select-none">"</div>
             <p className="font-serif italic text-xl text-white/90 leading-relaxed relative z-10 pl-4">

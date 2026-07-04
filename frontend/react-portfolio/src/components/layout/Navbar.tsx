@@ -55,14 +55,13 @@ export default function Navbar() {
       <div 
         className={clsx(
           "transition-all duration-500 ease-in-out border border-white/10 glass-card rounded-full flex items-center justify-between",
-          scrolled ? "w-full max-w-5xl px-4 py-2 bg-black/60 shadow-2xl shadow-primary/10" : "w-full max-w-7xl px-6 py-4 bg-transparent border-transparent shadow-none"
+          scrolled ? "w-full max-w-5xl px-4 py-2 bg-background shadow-xl" : "w-full max-w-7xl px-6 py-4 bg-transparent border-transparent shadow-none"
         )}
       >
         
         {/* Left Side: Branding */}
         <div className="flex items-center gap-3">
           <Link to="/" className="relative group flex items-center shrink-0">
-            <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
             <img 
               src="/logo.png" 
               alt="Khushal Singh Sankhla Logo" 
@@ -73,7 +72,7 @@ export default function Navbar() {
             />
           </Link>
           <div className={clsx("flex flex-col justify-center transition-all duration-500 overflow-hidden", scrolled ? "w-0 opacity-0 md:w-auto md:opacity-100 md:ml-2" : "w-auto opacity-100 ml-2")}>
-            <Link to="/" className="font-bold text-[15px] md:text-lg leading-tight bg-linear-to-r from-white via-primary to-secondary bg-clip-text text-transparent hover:brightness-125 transition-all">
+            <Link to="/" className="font-bold text-[15px] md:text-lg leading-tight text-white hover:text-primary transition-all">
               Khushal Singh Sankhla
             </Link>
           </div>
@@ -97,7 +96,7 @@ export default function Navbar() {
                 <motion.div 
                   layoutId="navbar-indicator"
                   className="absolute inset-0 bg-white/10 rounded-full border border-white/10"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 />
               )}
             </a>
@@ -118,7 +117,7 @@ export default function Navbar() {
             href="/resume/khushal-singh-sankhla-resume.pdf" 
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary hover:from-accent hover:to-primary shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all shrink-0 hover:scale-105"
+            className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all shrink-0 hover:scale-105"
           >
             <Download size={14} /> Resume
           </a>
@@ -140,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="xl:hidden absolute top-[110%] left-4 right-4 bg-black/90 backdrop-blur-3xl border border-white/10 p-6 flex flex-col gap-4 rounded-3xl shadow-2xl"
+            className="xl:hidden absolute top-[110%] left-4 right-4 bg-secondary-background border border-white/10 p-6 flex flex-col gap-4 rounded-3xl shadow-2xl"
           >
             {navLinks.map(link => (
               <a 
@@ -168,7 +167,7 @@ export default function Navbar() {
                 href="/resume/khushal-singh-sankhla-resume.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-primary shadow-md"
               >
                 <Download size={16} /> Resume
               </a>

@@ -28,8 +28,8 @@ export default function Contact() {
         
         {/* Left Column */}
         <div className="flex flex-col justify-center">
-          <p className="text-accent font-bold tracking-widest uppercase text-sm mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <p className="text-primary font-bold tracking-widest uppercase text-sm mb-6 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             Contact
           </p>
           <a 
@@ -37,7 +37,7 @@ export default function Contact() {
             className="group flex flex-col md:flex-row md:items-center gap-6 text-5xl md:text-7xl font-bold text-white hover:text-primary transition-colors w-fit"
           >
             Let's talk 
-            <span className="p-4 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary group-hover:rotate-45 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.05)] group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] w-fit">
+            <span className="p-4 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary group-hover:border-primary group-hover:rotate-45 transition-all duration-300 shadow-sm group-hover:shadow-md w-fit">
               <ArrowUpRight className="w-8 h-8 md:w-12 md:h-12" />
             </span>
           </a>
@@ -47,11 +47,10 @@ export default function Contact() {
         <div className="flex flex-col justify-center gap-8 md:pl-12 md:border-l border-white/5">
           {/* Timezone Clock */}
           <div className="glass-card p-6 md:p-8 rounded-[32px] border border-white/5 inline-flex flex-col w-fit relative overflow-hidden group">
-            <div className="absolute inset-0 bg-linear-to-br from-success/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
             <span className="text-text-secondary text-xs mb-2 uppercase tracking-widest font-bold">Local Time</span>
             <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-success animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-success animate-pulse" />
               <span className="text-2xl md:text-3xl font-mono text-white tracking-tight">{time}</span>
             </div>
             <span className="text-text-secondary/60 text-xs mt-3">Currently in Jodhpur, India</span>

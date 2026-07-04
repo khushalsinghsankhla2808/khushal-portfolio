@@ -28,9 +28,9 @@ export default function FeaturedAchievements() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="bg-cards border border-borders rounded-xl p-6 flex items-start gap-4 hover:border-secondary/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] transition-all"
+                className="bg-cards border border-borders rounded-xl p-6 flex items-start gap-4 hover:border-primary/50 hover:shadow-md transition-all"
               >
-                <div className="p-3 bg-secondary/10 text-secondary rounded-lg shrink-0">
+                <div className="p-3 bg-primary/10 text-primary rounded-lg shrink-0">
                   <Icon size={24} />
                 </div>
                 <p className="text-text-primary leading-relaxed text-sm font-medium">

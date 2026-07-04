@@ -57,7 +57,7 @@ export default function Resume() {
             transition={{ duration: 0.6 }}
             className="aspect-[1/1.4] bg-cards border border-borders rounded-2xl flex items-center justify-center relative overflow-hidden group"
           >
-            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
+            <div className="absolute inset-0 bg-background/95 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
               <p className="text-text-primary mb-4 font-bold">View Full Resume</p>
               <a 
                 href="/khushal-singh-sankhla-resume.pdf" 

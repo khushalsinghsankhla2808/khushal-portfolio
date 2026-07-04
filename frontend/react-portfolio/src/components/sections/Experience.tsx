@@ -50,10 +50,10 @@ export default function Experience() {
       
       <div className="text-center mb-16">
         <div className="inline-block mb-4">
-          <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">My Path</span>
+          <span className="font-caveat text-2xl text-primary transform -rotate-2 inline-block">My Path</span>
         </div>
         <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white">
-          Journey & <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">Achievements</span>
+          Journey & <span className="text-primary">Achievements</span>
         </h2>
       </div>
 
@@ -72,14 +72,14 @@ export default function Experience() {
                 className="mb-12 relative pl-8 md:pl-12 last:mb-0"
               >
                 {/* Timeline Node */}
-                <div className="absolute w-4 h-4 rounded-full left-[-8.5px] top-1.5 ring-4 ring-background bg-linear-to-b from-primary to-secondary shadow-[0_0_15px_rgba(59,130,246,0.6)]" />
+                <div className="absolute w-4 h-4 rounded-full left-[-8.5px] top-1.5 ring-4 ring-background bg-primary shadow-sm" />
                 
                 <div className="glass-card rounded-2xl p-6 md:p-8 hover:border-white/10 transition-colors group">
                   <span className="text-sm font-bold text-primary mb-2 block">{item.date}</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-white group-hover:to-text-secondary transition-all">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-primary transition-all">
                     {item.title}
                   </h3>
-                  <h4 className="text-base text-secondary font-medium mb-4">{item.org}</h4>
+                  <h4 className="text-base text-primary font-medium mb-4">{item.org}</h4>
                   
                   <ul className="space-y-3">
                     {item.bullets.map((bullet, i) => (
@@ -102,10 +102,10 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="glass-card rounded-3xl p-6 border border-white/5 bg-linear-to-b from-white/5 to-transparent"
+            className="glass-card rounded-3xl p-6 border border-white/5"
           >
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-              <Trophy className="text-accent" size={20} />
+              <Trophy className="text-primary" size={20} />
               Hall of Fame
             </h3>
             

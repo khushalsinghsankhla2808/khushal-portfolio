@@ -66,7 +66,7 @@ export default function Hero() {
           <h1 className="text-5xl md:text-7xl lg:text-[5rem] leading-[1.1] font-bold mb-6 tracking-tighter perspective-[1000px]">
             <div className="overflow-hidden pb-2"><div className="reveal-text transform-gpu">Hi, I'm</div></div>
             <div className="overflow-hidden pb-2">
-              <div className="reveal-text transform-gpu text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-secondary pb-2">
+              <div className="reveal-text transform-gpu text-primary pb-2">
                 Khushal Singh
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function Hero() {
                 download="khushal-singh-sankhla-resume.pdf"
                 className="group relative px-8 py-4 rounded-full font-bold text-base text-white overflow-hidden flex items-center gap-3 transition-all hover:scale-105"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-primary via-accent to-secondary" />
+                <div className="absolute inset-0 bg-primary" />
                 <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <span className="relative z-10">Download Resume</span>
                 <Download size={18} className="relative z-10 group-hover:translate-y-1 transition-transform" />
@@ -132,25 +132,15 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.5, duration: 1.5, ease: "easeOut" }}
           >
-            {/* Animated Rings */}
-            <motion.div 
-              className="absolute inset-4 rounded-full border border-primary/30"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div 
-              className="absolute inset-8 rounded-full border border-secondary/20"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            />
-            
             {/* Image Container */}
-            <div className="absolute inset-12 rounded-full p-1 bg-linear-to-br from-primary/50 via-accent/30 to-secondary/50 overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.3)] group">
+            <div className="absolute inset-4 rounded-full p-1 border border-white/10 overflow-hidden shadow-2xl group">
               <div className="w-full h-full rounded-full overflow-hidden bg-black relative flex items-center justify-center">
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent z-10" />
-                <span className="text-8xl font-bold text-transparent bg-clip-text bg-linear-to-br from-primary to-secondary relative z-0 transform group-hover:scale-110 transition-transform duration-700 ease-out">
-                  KS
-                </span>
+                <img 
+                  src="/Profile.png" 
+                  alt="Khushal Singh Sankhla" 
+                  className="w-full h-full object-cover object-top relative z-0 transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
               </div>
             </div>
 
@@ -158,8 +148,8 @@ export default function Hero() {
             <motion.div 
               initial={{ opacity: 0, y: -20, rotate: -5 }}
               animate={{ opacity: 1, y: 0, rotate: -5 }}
-              transition={{ delay: 2.0, type: "spring" }}
-              className="absolute top-4 right-0 z-20 glass-card border border-white/10 rounded-2xl p-4 shadow-xl backdrop-blur-md"
+              transition={{ delay: 2.0, duration: 0.6, ease: "easeOut" }}
+              className="absolute top-4 right-0 z-20 glass-card rounded-2xl p-4 shadow-xl"
             >
               <div className="text-2xl font-bold text-white leading-none mb-1">13+</div>
               <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Projects Completed</div>
@@ -168,8 +158,8 @@ export default function Hero() {
             <motion.div 
               initial={{ opacity: 0, y: 20, rotate: 5 }}
               animate={{ opacity: 1, y: 0, rotate: 5 }}
-              transition={{ delay: 2.2, type: "spring" }}
-              className="absolute bottom-4 left-0 z-20 glass-card border border-white/10 rounded-2xl p-4 shadow-xl backdrop-blur-md"
+              transition={{ delay: 2.2, duration: 0.6, ease: "easeOut" }}
+              className="absolute bottom-4 left-0 z-20 glass-card rounded-2xl p-4 shadow-xl"
             >
               <div className="text-2xl font-bold text-white leading-none mb-1">20+</div>
               <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">GitHub Repos</div>

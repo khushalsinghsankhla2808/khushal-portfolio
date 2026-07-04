@@ -50,14 +50,14 @@ export default function Lightbox({ images, currentIndex, isOpen, onClose, onNavi
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-100 flex items-center justify-center bg-background/95 backdrop-blur-xl"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-background/95"
           onClick={onClose}
         >
           {/* Controls */}
           <div className="absolute top-6 right-6 z-50 flex gap-4">
             <button 
               onClick={(e) => { e.stopPropagation(); onClose(); }}
-              className="p-3 bg-cards/50 hover:bg-cards border border-borders rounded-full text-text-secondary hover:text-text-primary transition-all backdrop-blur-md"
+              className="p-3 bg-cards/50 hover:bg-cards border border-borders rounded-full text-text-secondary hover:text-text-primary transition-all"
             >
               <X size={24} />
             </button>
@@ -67,13 +67,13 @@ export default function Lightbox({ images, currentIndex, isOpen, onClose, onNavi
             <>
               <button 
                 onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-                className="absolute left-6 top-1/2 -translate-y-1/2 z-50 p-4 bg-cards/50 hover:bg-cards border border-borders rounded-full text-text-secondary hover:text-text-primary transition-all backdrop-blur-md"
+                className="absolute left-6 top-1/2 -translate-y-1/2 z-50 p-4 bg-cards/50 hover:bg-cards border border-borders rounded-full text-text-secondary hover:text-text-primary transition-all"
               >
                 <ChevronLeft size={32} />
               </button>
               <button 
                 onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                className="absolute right-6 top-1/2 -translate-y-1/2 z-50 p-4 bg-cards/50 hover:bg-cards border border-borders rounded-full text-text-secondary hover:text-text-primary transition-all backdrop-blur-md"
+                className="absolute right-6 top-1/2 -translate-y-1/2 z-50 p-4 bg-cards/50 hover:bg-cards border border-borders rounded-full text-text-secondary hover:text-text-primary transition-all"
               >
                 <ChevronRight size={32} />
               </button>
@@ -94,10 +94,9 @@ export default function Lightbox({ images, currentIndex, isOpen, onClose, onNavi
               src={images[currentIndex]}
               alt={`Gallery Image ${currentIndex + 1}`}
               className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              style={{ filter: 'drop-shadow(0 0 30px rgba(59,130,246,0.15))' }}
             />
             
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-4 py-2 bg-cards/80 border border-borders rounded-full backdrop-blur-md text-text-secondary text-sm font-medium flex items-center gap-2">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 px-4 py-2 bg-cards/90 border border-borders rounded-full text-text-secondary text-sm font-medium flex items-center gap-2">
                <ZoomIn size={16} /> Click outside or press ESC to close {images.length > 1 && `(${currentIndex + 1} / ${images.length})`}
             </div>
           </div>

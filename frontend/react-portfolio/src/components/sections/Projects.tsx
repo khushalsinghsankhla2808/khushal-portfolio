@@ -35,7 +35,7 @@ export default function Projects() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter"
         >
-          Selected <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Works</span>
+          Selected <span className="text-primary">Works</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ export default function Projects() {
                 className={clsx(
                   "px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300",
                   activeCategory === cat 
-                    ? "bg-linear-to-r from-primary to-secondary text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]" 
+                    ? "bg-primary text-white shadow-md" 
                     : "bg-black/40 border border-white/5 text-text-secondary hover:text-white hover:bg-white/5"
                 )}
               >
@@ -94,15 +94,13 @@ export default function Projects() {
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] flex flex-col relative"
+              transition={{ duration: 0.4, delay: idx * 0.05, ease: "easeOut" }}
+              className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] flex flex-col relative"
             >
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-linear-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               {/* Featured Badge */}
               {project.featured && (
-                <div className="absolute top-6 right-6 z-20 px-4 py-1.5 bg-black/60 backdrop-blur-xl border border-primary/30 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                <div className="absolute top-6 right-6 z-20 px-4 py-1.5 bg-secondary-background border border-primary/30 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-md">
                   <Star size={14} className="fill-primary" /> Featured
                 </div>
               )}
@@ -110,7 +108,7 @@ export default function Projects() {
               <div className="p-8 flex-1 flex flex-col relative z-20">
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <span className="text-xs font-bold text-accent uppercase tracking-widest mb-2 block">
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">
                       {project.cardLabel || `Solo Project · ${project.category}`}
                     </span>
                     <span className="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-white/10">
@@ -142,7 +140,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <h3 className="font-bold text-2xl md:text-3xl mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-primary group-hover:to-secondary transition-all">{project.title}</h3>
+                <h3 className="font-bold text-2xl md:text-3xl mb-4 text-white group-hover:text-primary transition-all">{project.title}</h3>
                 <p className="text-text-secondary text-sm md:text-base mb-8 flex-1 leading-relaxed font-light">
                   {project.description}
                 </p>
