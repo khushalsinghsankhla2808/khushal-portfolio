@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0A0A0A;
-  --color-secondary-background: #0F0F0F;
-  --color-cards: #141414;
+  --color-background: #09090B;
+  --color-secondary-background: #111827;
+  --color-cards: #18181B;
   --color-primary: #3B82F6;
   --color-secondary: #3B82F6;
   --color-accent: #3B82F6;
@@ -11,10 +11,10 @@
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
-  --color-text-primary: #F8FAFC;
-  --color-text-secondary: #94A3B8;
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #A1A1AA;
   --color-borders: rgba(255, 255, 255, 0.08);
-  --font-sans: "Inter", "Geist", "Space Grotesk", sans-serif;
+  --font-sans: "Geist", "Inter", "Space Grotesk", sans-serif;
 }
 
 @layer base {
@@ -45,6 +45,16 @@
   .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     pointer-events: none;
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .bg-radial-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12), transparent 60%);
   }
 
   .text-gradient {

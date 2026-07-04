@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../../data/projects';
-import { ExternalLink, Search, Star, Clock } from 'lucide-react';
+import { ExternalLink, Search, Star, Clock, X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import clsx from 'clsx';
 
@@ -10,6 +10,13 @@ const CATEGORIES = ["All", "Power BI", "SQL", "Excel", "Python", "MERN", "AI", "
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
 
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
@@ -97,7 +104,11 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, delay: idx * 0.05, ease: "easeOut" }}
               data-cursor="hover"
-              className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] hover:shadow-primary/10 flex flex-col relative"
+              onMouseEnter={() => setHoveredProject(project.coverImage || null)}
+              onMouseLeave={() => setHoveredProject(null)}
+              onMouseMove={handleMouseMove}
+              onClick={() => setSelectedProject(project.coverImage || null)}
+              className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] hover:shadow-primary/10 flex flex-col relative cursor-pointer"
             >
 
               <div className="p-8 flex-1 flex flex-col relative z-20">
@@ -132,6 +143,7 @@ export default function Projects() {
                         href={project.liveUrl} 
                         target="_blank" 
                         rel="noopener noreferrer" 
+                        onClick={(e) => e.stopPropagation()}
                         className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all shrink-0"
                         title="Live Demo"
                       >
@@ -142,6 +154,7 @@ export default function Projects() {
                       href={project.githubUrl} 
                       target="_blank" 
                       rel="noreferrer" 
+                      onClick={(e) => e.stopPropagation()}
                       className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all shrink-0"
                       title="GitHub Repository"
                     >
@@ -172,6 +185,7 @@ export default function Projects() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className="px-6 py-2.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-bold text-sm transition-all rounded-full flex items-center justify-center gap-2 group/btn"
                   >
                     View Project Details
@@ -189,6 +203,58 @@ export default function Projects() {
           </div>
         )}
       </div>
+
+      {/* Desktop Floating Preview */}
+      <AnimatePresence>
+        {hoveredProject && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="hidden md:block fixed z-100 pointer-events-none"
+            style={{
+              left: mousePos.x + 20,
+              top: mousePos.y + 20,
+            }}
+          >
+            <div className="p-3 bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl">
+              <img src={hoveredProject} alt="Project Preview" className="w-[400px] h-auto rounded-xl object-contain shadow-lg" loading="lazy" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed inset-0 z-100 bg-background/80 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-3 w-full max-w-md relative shadow-2xl"
+              onClick={e => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+              >
+                <X size={24} />
+              </button>
+              <img src={selectedProject} alt="Project Preview" className="w-full h-auto rounded-xl shadow-lg" loading="lazy" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
