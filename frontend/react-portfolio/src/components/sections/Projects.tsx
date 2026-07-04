@@ -100,14 +100,6 @@ export default function Projects() {
               className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] hover:shadow-primary/10 flex flex-col relative"
             >
 
-              {/* Featured Badge */}
-              {project.featured && (
-                <div className="absolute top-6 right-6 z-20 px-4 py-1.5 bg-secondary-background border border-primary/30 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-md">
-                  <Star size={14} className="fill-primary" /> Featured
-                </div>
-              )}
-
-
               <div className="p-8 flex-1 flex flex-col relative z-20">
                 <div className="flex justify-between items-start mb-6">
                   <div>
@@ -127,13 +119,20 @@ export default function Projects() {
                     </div>
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 items-center">
+                    {/* Featured Badge */}
+                    {project.featured && (
+                      <div className="px-3 py-1.5 mr-2 bg-primary/10 border border-primary/30 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-md">
+                        <Star size={12} className="fill-primary" /> Featured
+                      </div>
+                    )}
+                    
                     {project.liveUrl && (
                       <a 
                         href={project.liveUrl} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all"
+                        className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all shrink-0"
                         title="Live Demo"
                       >
                         <ExternalLink size={18} />
@@ -143,7 +142,7 @@ export default function Projects() {
                       href={project.githubUrl} 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all"
+                      className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all shrink-0"
                       title="GitHub Repository"
                     >
                       <FaGithub size={18} />
