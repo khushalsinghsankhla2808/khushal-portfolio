@@ -84,6 +84,7 @@ export default function Navbar() {
             <a 
               key={link.id}
               href={link.href} 
+              data-cursor="hover"
               className={clsx(
                 "text-sm font-medium transition-colors relative px-4 py-2 rounded-full group",
                 activeSection === link.id 
@@ -106,10 +107,10 @@ export default function Navbar() {
         {/* Right Side: Socials & Resume */}
         <div className="hidden lg:flex items-center gap-4 shrink-0">
           <div className="flex items-center gap-3 pr-4 border-r border-white/10">
-            <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" className="text-text-secondary hover:text-white hover:scale-110 transition-all">
+            <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-white hover:scale-110 transition-all">
               <FaGithub size={18} />
             </a>
-            <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" className="text-text-secondary hover:text-primary hover:scale-110 transition-all">
+            <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-primary hover:scale-110 transition-all">
               <FaLinkedin size={18} />
             </a>
           </div>
@@ -117,6 +118,7 @@ export default function Navbar() {
             href="/resume/khushal-singh-sankhla-resume.pdf" 
             target="_blank"
             rel="noopener noreferrer"
+            data-cursor="hover"
             className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all shrink-0 hover:scale-105"
           >
             <Download size={14} /> Resume
@@ -125,7 +127,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <div className="xl:hidden flex items-center shrink-0">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
+          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" className="text-white p-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -146,6 +148,7 @@ export default function Navbar() {
                 key={link.id}
                 href={link.href} 
                 onClick={() => setIsOpen(false)} 
+                data-cursor="hover"
                 className={clsx(
                   "text-lg font-bold tracking-wide py-2 border-b border-white/5",
                   activeSection === link.id ? "text-secondary" : "text-text-secondary hover:text-white"
@@ -156,10 +159,10 @@ export default function Navbar() {
             ))}
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-6">
-                <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" className="text-text-secondary hover:text-white">
+                <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-white">
                   <FaGithub size={24} />
                 </a>
-                <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" className="text-text-secondary hover:text-primary">
+                <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-primary">
                   <FaLinkedin size={24} />
                 </a>
               </div>
@@ -167,6 +170,7 @@ export default function Navbar() {
                 href="/resume/khushal-singh-sankhla-resume.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cursor="hover"
                 className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-primary shadow-md"
               >
                 <Download size={16} /> Resume

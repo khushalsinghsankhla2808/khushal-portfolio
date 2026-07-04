@@ -60,6 +60,7 @@ export default function Projects() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
+                data-cursor="hover"
                 className={clsx(
                   "px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300",
                   activeCategory === cat 
@@ -95,6 +96,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, delay: idx * 0.05, ease: "easeOut" }}
+              data-cursor="hover"
               className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] flex flex-col relative"
             >
 

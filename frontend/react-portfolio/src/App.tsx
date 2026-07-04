@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import SmoothScroll from './components/layout/SmoothScroll';
 import LoadingScreen from './components/ui/LoadingScreen';
 import BackgroundEffects from './components/ui/BackgroundEffects';
+import CustomCursor from './components/ui/CustomCursor';
 
 function ScrollToHashElement() {
   const { hash } = useLocation();
@@ -31,6 +32,7 @@ function App() {
   return (
     <SmoothScroll>
       <Router>
+        <CustomCursor />
         <BackgroundEffects />
         
         <AnimatePresence mode="wait">

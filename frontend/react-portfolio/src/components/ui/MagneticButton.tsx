@@ -34,6 +34,7 @@ export default function MagneticButton({
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={`inline-block ${className}`}
       onClick={onClick}
+      data-cursor="hover"
     >
       {children}
     </motion.div>

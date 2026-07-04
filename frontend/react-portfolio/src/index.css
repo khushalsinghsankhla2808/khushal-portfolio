@@ -26,6 +26,13 @@
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
+
+  /* Native cursor is hidden only once CustomCursor confirms a fine pointer
+     is present, so touch devices never lose their cursor/tap feedback. */
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none;
+  }
 }
 
 @layer utilities {
