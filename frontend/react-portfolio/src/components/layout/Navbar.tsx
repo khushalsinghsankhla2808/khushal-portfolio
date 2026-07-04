@@ -54,8 +54,8 @@ export default function Navbar() {
     >
       <div 
         className={clsx(
-          "transition-all duration-500 ease-in-out border border-white/10 glass-card rounded-full flex items-center justify-between",
-          scrolled ? "w-full max-w-5xl px-4 py-2 bg-background shadow-xl" : "w-full max-w-7xl px-6 py-4 bg-transparent border-transparent shadow-none"
+          "transition-all duration-500 ease-in-out rounded-full flex items-center justify-between",
+          scrolled ? "w-full max-w-5xl px-4 py-2 bg-background/40 border border-white/10 shadow-none" : "w-full max-w-7xl px-6 py-4 bg-transparent border border-transparent shadow-none"
         )}
       >
         
