@@ -308,7 +308,7 @@ export const projects: Project[] = [
     status: "Completed",
     difficulty: "Intermediate",
     featured: false,
-    coverImage: "/Projects Images/KSS Ecommece Dashboard.png",
+    coverImage: "/Projects Images/KSS Ecommerce Dashboard.png",
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/kss-ecommerce-dashboard",
     cardLabel: "Solo Project · Power BI",
