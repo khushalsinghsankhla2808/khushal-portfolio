@@ -59,7 +59,7 @@ export default function Contact() {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Contact
             </p>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter heading-glow">
+            <h2 className="text-5xl md:text-7xl font-bold text-text-primary mb-6 tracking-tighter heading-glow">
               Let's build <br />
               something <span className="text-primary">great.</span>
             </h2>
@@ -73,21 +73,21 @@ export default function Contact() {
               <span className="text-text-secondary text-xs mb-2 uppercase tracking-widest font-bold">Local Time</span>
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-success animate-pulse" />
-                <span className="text-2xl font-mono text-white tracking-tight">{time}</span>
+                <span className="text-2xl font-mono text-text-primary tracking-tight">{time}</span>
               </div>
-              <span className="text-white/40 text-xs mt-2 block">Currently in Jodhpur, India</span>
+              <span className="text-text-primary/40 text-xs mt-2 block">Currently in Jodhpur, India</span>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] text-text-secondary transition-all duration-300">
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_var(--color-glow)] text-text-secondary transition-all duration-300">
                 <FaLinkedin size={18} />
                 <span className="text-sm font-bold">LinkedIn</span>
               </a>
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] text-text-secondary transition-all duration-300">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_var(--color-glow)] text-text-secondary transition-all duration-300">
                 <FaGithub size={18} />
                 <span className="text-sm font-bold">GitHub</span>
               </a>
-              <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] text-text-secondary transition-all duration-300">
+              <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_var(--color-glow)] text-text-secondary transition-all duration-300">
                 <Mail size={18} />
                 <span className="text-sm font-bold">Email</span>
               </a>
@@ -114,7 +114,7 @@ export default function Contact() {
                 >
                   <CheckCircle2 size={40} />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+                <h3 className="text-2xl font-bold text-text-primary mb-2">Message Sent!</h3>
                 <p className="text-text-secondary">Thanks for reaching out. I'll get back to you as soon as possible.</p>
               </motion.div>
             ) : (
@@ -131,7 +131,7 @@ export default function Contact() {
                     {...register('name')}
                     id="name"
                     disabled={isSubmitting}
-                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
+                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-text-primary placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
                     placeholder="Name"
                   />
                   <label htmlFor="name" className="absolute left-0 -top-3.5 text-xs text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text">
@@ -146,7 +146,7 @@ export default function Contact() {
                     id="email"
                     type="email"
                     disabled={isSubmitting}
-                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
+                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-text-primary placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
                     placeholder="Email"
                   />
                   <label htmlFor="email" className="absolute left-0 -top-3.5 text-xs text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text">
@@ -161,7 +161,7 @@ export default function Contact() {
                     id="message"
                     disabled={isSubmitting}
                     rows={4}
-                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors resize-none disabled:opacity-50"
+                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-text-primary placeholder-transparent focus:outline-hidden focus:border-primary transition-colors resize-none disabled:opacity-50"
                     placeholder="Message"
                   />
                   <label htmlFor="message" className="absolute left-0 -top-3.5 text-xs text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text">
@@ -173,7 +173,7 @@ export default function Contact() {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="mt-4 px-8 py-4 bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] text-white font-bold rounded-full transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70"
+                  className="mt-4 px-8 py-4 bg-linear-to-r from-primary to-secondary shadow-[0_0_15px_var(--color-glow)] hover:shadow-[0_0_25px_var(--color-glow)] text-white font-bold rounded-full transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70"
                 >
                   {isSubmitting ? (
                     <>

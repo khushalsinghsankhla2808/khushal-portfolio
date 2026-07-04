@@ -21,7 +21,7 @@ export default function About() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight text-white heading-glow">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight text-text-primary heading-glow">
               Turning <span className="text-primary">Data</span> into{" "}
               <span className="text-primary">Meaningful Solutions</span>
             </h2>
@@ -29,11 +29,11 @@ export default function About() {
             <div className="space-y-6 text-text-secondary text-lg leading-relaxed font-light">
               <p>
                 I'm a passionate{" "}
-                <strong className="text-white font-medium">
+                <strong className="text-text-primary font-medium">
                   Data Analyst
                 </strong>{" "}
                 and{" "}
-                <strong className="text-white font-medium">
+                <strong className="text-text-primary font-medium">
                   Business Intelligence Developer
                 </strong>{" "}
                 who enjoys transforming raw data into insights that help people
@@ -51,7 +51,7 @@ export default function About() {
               <p>
                 Alongside my work in Data Analytics and Business Intelligence,
                 I'm actively exploring{" "}
-                <strong className="text-white font-medium">
+                <strong className="text-text-primary font-medium">
                   Full-Stack Development with AI
                 </strong>
                 . I enjoy building projects that help me learn modern web
@@ -79,13 +79,13 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="col-span-2 glass-card rounded-3xl p-6 border border-borders relative overflow-hidden group hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300"
+            className="col-span-2 glass-card rounded-3xl p-6 border border-borders relative overflow-hidden group hover:border-primary/50 hover:shadow-[0_0_20px_var(--color-glow)] transition-all duration-300"
           >
             <span className="text-xs uppercase tracking-widest text-primary font-bold mb-2 block">
               Beyond the Screen
             </span>
 
-            <h3 className="text-xl font-bold text-white mb-2">
+            <h3 className="text-xl font-bold text-text-primary mb-2">
               Cricket & Continuous Learning
             </h3>
 
@@ -102,13 +102,13 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="col-span-1 glass-card rounded-3xl p-6 border border-borders hover:border-secondary/50 hover:shadow-[0_0_20px_rgba(192,132,252,0.15)] transition-all duration-300"
+            className="col-span-1 glass-card rounded-3xl p-6 border border-borders hover:border-secondary/50 hover:shadow-[0_0_20px_var(--color-glow)] transition-all duration-300"
           >
             <span className="text-xs uppercase tracking-widest text-secondary font-bold mb-3 block">
               Currently Learning
             </span>
 
-            <ul className="text-sm text-white space-y-2 font-medium">
+            <ul className="text-sm text-text-primary space-y-2 font-medium">
               <li>React & Next.js</li>
               <li>Node.js & Express</li>
               <li>AI Integration</li>
@@ -121,9 +121,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="col-span-1 glass-card rounded-3xl p-6 border border-borders flex items-center justify-center text-center hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300"
+            className="col-span-1 glass-card rounded-3xl p-6 border border-borders flex items-center justify-center text-center hover:border-primary/50 hover:shadow-[0_0_20px_var(--color-glow)] transition-all duration-300"
           >
-            <p className="text-lg font-bold text-white">
+            <p className="text-lg font-bold text-text-primary">
               "Always learning.<br />Always building."
             </p>
           </motion.div>
@@ -134,13 +134,13 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="col-span-2 glass-card rounded-3xl p-8 border border-borders relative overflow-hidden hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300"
+            className="col-span-2 glass-card rounded-3xl p-8 border border-borders relative overflow-hidden hover:border-primary/50 hover:shadow-[0_0_20px_var(--color-glow)] transition-all duration-300"
           >
             <div className="absolute -left-4 -top-4 text-primary/20 font-serif text-8xl leading-none select-none">
               "
             </div>
 
-            <p className="font-serif italic text-xl text-white/90 leading-relaxed relative z-10 pl-4">
+            <p className="font-serif italic text-xl text-text-primary/90 leading-relaxed relative z-10 pl-4">
               Turning data into insights and ideas into intelligent
               applications.
             </p>

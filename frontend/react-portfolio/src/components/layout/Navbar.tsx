@@ -121,7 +121,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="hover"
-            className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all duration-300 shrink-0 hover:scale-[1.03]"
+            className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_15px_var(--color-glow)] hover:shadow-[0_0_25px_var(--color-glow)] transition-all duration-300 shrink-0 hover:scale-[1.03]"
           >
             <Download size={14} /> Resume
           </a>
@@ -129,7 +129,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <div className="xl:hidden flex items-center shrink-0">
-          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" className="text-white p-2 bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors">
+          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" className="text-text-primary p-2 bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors">
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -153,7 +153,7 @@ export default function Navbar() {
                 data-cursor="hover"
                 className={clsx(
                   "text-lg font-bold tracking-wide py-2 border-b border-borders",
-                  activeSection === link.id ? "text-secondary" : "text-text-secondary hover:text-white"
+                  activeSection === link.id ? "text-secondary" : "text-text-secondary hover:text-text-primary"
                 )}
               >
                 {link.name}
@@ -161,7 +161,7 @@ export default function Navbar() {
             ))}
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-6">
-                <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-white">
+                <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-text-primary">
                   <FaGithub size={24} />
                 </a>
                 <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-primary">
@@ -173,7 +173,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_15px_var(--color-glow)]"
               >
                 <Download size={16} /> Resume
               </a>

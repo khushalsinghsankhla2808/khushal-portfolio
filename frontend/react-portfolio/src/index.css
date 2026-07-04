@@ -33,6 +33,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   /* Native cursor is hidden only once CustomCursor confirms a fine pointer
@@ -51,6 +52,7 @@
     box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 4px 16px -4px rgba(168, 85, 247, 0.05);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
   }
   
   .bg-noise {
@@ -83,4 +85,51 @@
   .heading-glow {
     text-shadow: 0 0 24px rgba(168, 85, 247, 0.25);
   }
+
+  [data-theme="light"] .glass-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--color-borders);
+    box-shadow: 0 8px 32px -4px rgba(88, 28, 135, 0.08), 0 4px 16px -4px rgba(168, 85, 247, 0.05);
+  }
+
+  [data-theme="light"] .bg-grid {
+    background-image: linear-gradient(to right, rgba(88, 28, 135, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(88, 28, 135, 0.04) 1px, transparent 1px);
+  }
+
+  [data-theme="light"] .bg-radial-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.08), transparent 60%);
+  }
+  
+  [data-theme="light"] .bg-radial-ambient {
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.04) 0%, transparent 70%);
+  }
+
+  [data-theme="light"] .heading-glow {
+    text-shadow: none; /* Drop glow in light mode for crispness */
+  }
+}
+
+/* Light Mode Overrides for CSS Variables */
+[data-theme="light"] {
+  --color-background: #FAF7FF;
+  --color-secondary-background: #F3EEFC;
+  --color-surface: #EDE5FA;
+  --color-cards: #FFFFFF;
+
+  --color-primary: #9333EA;
+  --color-secondary: #A855F7;
+  --color-accent: #9333EA;
+  --color-highlight: #D946EF;
+
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+
+  --color-text-primary: #1A1025;
+  --color-text-secondary: #4B4363;
+  --color-text-muted: #6B6483;
+
+  --color-borders: rgba(88, 28, 135, 0.12);
+  --color-glow: rgba(168, 85, 247, 0.2);
 }

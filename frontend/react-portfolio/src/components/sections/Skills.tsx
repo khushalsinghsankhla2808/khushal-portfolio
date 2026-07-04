@@ -46,7 +46,7 @@ export default function Skills() {
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white heading-glow">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-text-primary heading-glow">
             Technical <span className="text-primary">Expertise</span>
           </h2>
 
@@ -64,7 +64,7 @@ export default function Skills() {
 
           <div className="mb-10">
 
-            <h3 className="text-3xl font-bold text-white flex items-center gap-3 mb-4">
+            <h3 className="text-3xl font-bold text-text-primary flex items-center gap-3 mb-4">
 
               <span className="w-3 h-3 rounded-full bg-primary" />
 
@@ -102,7 +102,7 @@ export default function Skills() {
                 bg-cards border border-borders
                 hover:border-primary/50
                 hover:bg-primary/5
-                hover:shadow-[0_0_25px_rgba(168,85,247,0.18)]
+                hover:shadow-[0_0_25px_var(--color-glow)]
                 transition-all duration-300"
               >
 
@@ -124,7 +124,7 @@ export default function Skills() {
 
           <div className="mb-10">
 
-            <h3 className="text-3xl font-bold text-white flex items-center gap-3 mb-4">
+            <h3 className="text-3xl font-bold text-text-primary flex items-center gap-3 mb-4">
 
               <span className="w-3 h-3 rounded-full bg-secondary" />
 
@@ -163,7 +163,7 @@ export default function Skills() {
                 bg-cards border border-borders
                 hover:border-secondary/50
                 hover:bg-secondary/5
-                hover:shadow-[0_0_25px_rgba(192,132,252,0.18)]
+                hover:shadow-[0_0_25px_var(--color-glow)]
                 transition-all duration-300"
               >
 

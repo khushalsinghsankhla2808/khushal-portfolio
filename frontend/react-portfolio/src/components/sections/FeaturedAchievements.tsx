@@ -30,7 +30,7 @@ export default function FeaturedAchievements() {
           <div className="inline-block mb-4">
             <span className="font-caveat text-2xl text-primary transform -rotate-2 inline-block">Milestones</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white heading-glow">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-text-primary heading-glow">
             Featured <span className="text-primary">Achievements</span>
           </h2>
           <p className="text-text-secondary text-lg font-light max-w-2xl mx-auto">
@@ -49,7 +49,7 @@ export default function FeaturedAchievements() {
               transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
               className="text-center"
             >
-              <div className="text-5xl md:text-6xl font-bold text-white mb-2 tracking-tighter">
+              <div className="text-5xl md:text-6xl font-bold text-text-primary mb-2 tracking-tighter">
                 {isInView ? (
                   <CountUp end={stat.value} duration={2.5} separator="," />
                 ) : (
@@ -72,12 +72,12 @@ export default function FeaturedAchievements() {
                 whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-                className="glass-card rounded-[24px] p-8 flex flex-col gap-6 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 hover:-translate-y-1 group"
+                className="glass-card rounded-[24px] p-8 flex flex-col gap-6 hover:border-primary/50 hover:shadow-[0_0_20px_var(--color-glow)] transition-all duration-300 hover:-translate-y-1 group"
               >
                 <div className="w-14 h-14 bg-white/5 border border-borders rounded-2xl flex items-center justify-center text-text-secondary group-hover:text-primary group-hover:bg-primary/10 transition-colors duration-300">
                   <Icon size={24} />
                 </div>
-                <p className="text-white leading-relaxed text-base font-medium">
+                <p className="text-text-primary leading-relaxed text-base font-medium">
                   {item.text}
                 </p>
               </motion.div>

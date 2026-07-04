@@ -8,6 +8,7 @@ import SmoothScroll from './components/layout/SmoothScroll';
 import LoadingScreen from './components/ui/LoadingScreen';
 import BackgroundEffects from './components/ui/BackgroundEffects';
 import CustomCursor from './components/ui/CustomCursor';
+import ThemeToggle from './components/ui/ThemeToggle';
 
 function ScrollToHashElement() {
   const { hash } = useLocation();
@@ -38,6 +39,8 @@ function App() {
         <AnimatePresence mode="wait">
           {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} key="loading" />}
         </AnimatePresence>
+
+        <ThemeToggle />
 
         <div 
           className={`flex flex-col min-h-screen transition-opacity duration-1000 delay-300 ${isLoading ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}

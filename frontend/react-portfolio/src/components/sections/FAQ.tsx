@@ -36,7 +36,7 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter text-white heading-glow"
+          className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter text-text-primary heading-glow"
         >
           Frequently Asked <span className="text-primary">Questions</span>
         </motion.h2>
@@ -64,14 +64,14 @@ export default function FAQ() {
               transition={{ duration: 0.4, delay: idx * 0.1 }}
               className={clsx(
                 "glass-card rounded-[24px] overflow-hidden transition-all duration-300 border",
-                isOpen ? "border-primary/50 shadow-[0_0_20px_rgba(168,85,247,0.15)] bg-cards/95" : "border-borders hover:border-primary/30 hover:bg-cards/40 bg-cards/20"
+                isOpen ? "border-primary/50 shadow-[0_0_20px_var(--color-glow)] bg-cards/95" : "border-borders hover:border-primary/30 hover:bg-cards/40 bg-cards/20"
               )}
             >
               <button 
                 onClick={() => setOpenIdx(isOpen ? null : idx)}
                 className="w-full text-left px-8 py-6 flex items-center justify-between group"
               >
-                <span className="flex items-center gap-4 text-lg font-bold text-white">
+                <span className="flex items-center gap-4 text-lg font-bold text-text-primary">
                   <div className={clsx(
                     "p-2 rounded-xl transition-colors duration-300",
                     isOpen ? "bg-primary/20 text-primary" : "bg-white/5 text-text-secondary group-hover:bg-white/10 group-hover:text-white"
@@ -84,7 +84,7 @@ export default function FAQ() {
                   size={20} 
                   className={clsx(
                     "transition-transform duration-300 shrink-0", 
-                    isOpen ? "rotate-180 text-primary" : "text-text-secondary group-hover:text-white"
+                    isOpen ? "rotate-180 text-primary" : "text-text-secondary group-hover:text-text-primary"
                   )} 
                 />
               </button>

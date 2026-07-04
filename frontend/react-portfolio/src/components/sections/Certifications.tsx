@@ -33,7 +33,7 @@ export default function Certifications() {
           <div className="inline-block mb-4">
             <span className="font-caveat text-2xl text-primary transform -rotate-2 inline-block">Learning Journey</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white heading-glow">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-text-primary heading-glow">
             Certifications & <span className="text-primary">Continuous Learning</span>
           </h2>
           <p className="text-text-secondary text-lg font-light max-w-2xl mx-auto">
@@ -44,17 +44,17 @@ export default function Certifications() {
         {/* Statistics Row */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 my-16 border-y border-borders py-8 bg-white/0.02">
           <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2 heading-glow">5+</div>
+            <div className="text-4xl font-bold text-text-primary mb-2 heading-glow">5+</div>
             <div className="text-sm uppercase tracking-widest text-primary font-bold">Professional Certifications</div>
           </div>
           <div className="hidden md:block w-px h-16 bg-borders" />
           <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2 heading-glow">13+</div>
+            <div className="text-4xl font-bold text-text-primary mb-2 heading-glow">13+</div>
             <div className="text-sm uppercase tracking-widest text-primary font-bold">Hands-on Projects</div>
           </div>
           <div className="hidden md:block w-px h-16 bg-borders" />
           <div className="text-center">
-            <div className="text-4xl font-bold text-white mb-2 heading-glow">Always</div>
+            <div className="text-4xl font-bold text-text-primary mb-2 heading-glow">Always</div>
             <div className="text-sm uppercase tracking-widest text-primary font-bold">Learning New Technologies</div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function Certifications() {
                 onMouseLeave={() => setHoveredCert(null)}
                 onMouseMove={handleMouseMove}
                 onClick={() => setSelectedCert(cert)}
-                className="w-350px shrink-0 glass-card rounded-3xl p-6 border border-borders flex flex-col relative group transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-white/0.02 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] cursor-pointer"
+                className="w-350px shrink-0 glass-card rounded-3xl p-6 border border-borders flex flex-col relative group transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:bg-white/0.02 hover:shadow-[0_0_30px_var(--color-glow)] cursor-pointer"
               >
                 {/* Status chip */}
                 <div className="absolute top-6 right-6">
@@ -113,7 +113,7 @@ export default function Certifications() {
                   )}
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-6 leading-tight group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors">
                   {cert.title}
                 </h3>
                 
@@ -159,13 +159,13 @@ export default function Certifications() {
             <div className="p-5 bg-cards/95 backdrop-blur-xl border border-borders rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.9)] w-[400px]">
               <div className="mb-4 pb-4 border-b border-borders/50 text-center">
                 <div className="text-[10px] text-text-secondary uppercase tracking-widest mb-2">{hoveredCert.issuer}</div>
-                <div className="text-lg font-bold text-white mb-2 leading-tight">{hoveredCert.title}</div>
+                <div className="text-lg font-bold text-text-primary mb-2 leading-tight">{hoveredCert.title}</div>
                 <div className="flex justify-center items-center gap-3 text-xs">
                   <span className="text-success flex items-center gap-1 font-bold"><CheckCircle2 size={12} /> Completed</span>
                   {hoveredCert.issueDate && <span className="text-text-secondary">Issued: {hoveredCert.issueDate}</span>}
                 </div>
                 {hoveredCert.credentialId && hoveredCert.credentialId !== "PENDING" && (
-                  <div className="mt-3 text-xs font-mono text-text-secondary/70 bg-black/30 py-1.5 px-3 rounded-md w-fit mx-auto">ID: {hoveredCert.credentialId}</div>
+                  <div className="mt-3 text-xs font-mono text-text-secondary/70 bg-surface/30 py-1.5 px-3 rounded-md w-fit mx-auto">ID: {hoveredCert.credentialId}</div>
                 )}
               </div>
               
@@ -187,7 +187,7 @@ export default function Certifications() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed inset-0 z-100 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+            className="md:hidden fixed inset-0 z-100 bg-background/80 backdrop-blur-md flex items-center justify-center p-4"
             onClick={() => setSelectedCert(null)}
           >
             <motion.div
@@ -200,14 +200,14 @@ export default function Certifications() {
             >
               <button 
                 onClick={() => setSelectedCert(null)}
-                className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+                className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-text-primary hover:bg-white/20 transition-colors"
               >
                 <X size={24} />
               </button>
 
               <div className="mb-4 pb-4 border-b border-borders/50 text-center">
                 <div className="text-[10px] text-text-secondary uppercase tracking-widest mb-2">{selectedCert.issuer}</div>
-                <div className="text-lg font-bold text-white mb-2 leading-tight">{selectedCert.title}</div>
+                <div className="text-lg font-bold text-text-primary mb-2 leading-tight">{selectedCert.title}</div>
                 <div className="flex justify-center items-center gap-3 text-xs">
                   <span className="text-success flex items-center gap-1 font-bold"><CheckCircle2 size={12} /> Completed</span>
                   {selectedCert.issueDate && <span className="text-text-secondary">Issued: {selectedCert.issueDate}</span>}
@@ -224,7 +224,7 @@ export default function Certifications() {
 
       {/* Section Ending Quote */}
       <div className="mt-20 text-center max-w-3xl mx-auto px-4 relative z-20">
-        <p className="font-serif italic text-xl md:text-2xl text-white/90 leading-relaxed mb-12">
+        <p className="font-serif italic text-xl md:text-2xl text-text-primary/90 leading-relaxed mb-12">
           "Learning isn't about collecting certificates.<br/>
           It's about applying knowledge to build better solutions and continuously improving with every project."
         </p>

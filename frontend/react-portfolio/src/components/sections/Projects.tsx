@@ -40,7 +40,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter text-white heading-glow"
+          className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter text-text-primary heading-glow"
         >
           Selected <span className="text-primary">Works</span>
         </motion.h2>
@@ -72,7 +72,7 @@ export default function Projects() {
                   "px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300",
                   activeCategory === cat 
                     ? "bg-primary text-white shadow-md" 
-                    : "bg-black/40 border border-borders text-text-secondary hover:text-white hover:bg-white/5"
+                    : "bg-surface/40 border border-borders text-text-secondary hover:text-primary hover:bg-primary/5"
                 )}
               >
                 {cat}
@@ -87,7 +87,7 @@ export default function Projects() {
               placeholder="Search projects..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-black/40 border border-borders rounded-full pl-12 pr-6 py-3 text-sm text-white focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-text-secondary/50"
+              className="w-full bg-surface/40 border border-borders rounded-full pl-12 pr-6 py-3 text-sm text-text-primary focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-text-secondary/50"
             />
           </div>
         </motion.div>
@@ -108,7 +108,7 @@ export default function Projects() {
               onMouseLeave={() => setHoveredProject(null)}
               onMouseMove={handleMouseMove}
               onClick={() => setSelectedProject(project.coverImage || null)}
-              className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_50px_-10px_rgba(168,85,247,0.15)] flex flex-col relative cursor-pointer"
+              className="group glass-card rounded-[32px] overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_50px_-10px_var(--color-glow)] flex flex-col relative cursor-pointer"
             >
 
               <div className="p-8 flex-1 flex flex-col relative z-20">
@@ -144,7 +144,7 @@ export default function Projects() {
                         target="_blank" 
                         rel="noopener noreferrer" 
                         onClick={(e) => e.stopPropagation()}
-                      className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all shrink-0"
+                      className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-text-primary hover:bg-white/20 transition-all shrink-0"
                       title="Live Demo"
                     >
                       <ExternalLink size={18} />
@@ -155,7 +155,7 @@ export default function Projects() {
                     target="_blank" 
                     rel="noreferrer" 
                     onClick={(e) => e.stopPropagation()}
-                    className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-white hover:bg-white/20 transition-all shrink-0"
+                    className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-text-primary hover:bg-white/20 transition-all shrink-0"
                     title="GitHub Repository"
                   >
                     <FaGithub size={18} />
@@ -163,7 +163,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <h3 className="font-bold text-2xl md:text-3xl mb-4 text-white group-hover:text-primary transition-all">{project.title}</h3>
+                <h3 className="font-bold text-2xl md:text-3xl mb-4 text-text-primary group-hover:text-primary transition-all">{project.title}</h3>
                 <p className="text-text-secondary text-sm md:text-base mb-8 flex-1 leading-relaxed font-light">
                   {project.description}
                 </p>
@@ -186,7 +186,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="px-6 py-2.5 bg-white/5 hover:bg-white/10 text-white border border-borders font-bold text-sm transition-all rounded-full flex items-center justify-center gap-2 group/btn"
+                    className="px-6 py-2.5 bg-white/5 hover:bg-white/10 text-text-primary border border-borders font-bold text-sm transition-all rounded-full flex items-center justify-center gap-2 group/btn"
                   >
                     View Project Details
                     <ExternalLink size={16} className="text-primary group-hover/btn:translate-x-1 transition-transform" />
@@ -246,7 +246,7 @@ export default function Projects() {
             >
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+                className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-text-primary hover:bg-white/20 transition-colors"
               >
                 <X size={24} />
               </button>

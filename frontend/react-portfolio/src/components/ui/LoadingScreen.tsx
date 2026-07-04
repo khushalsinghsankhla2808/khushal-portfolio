@@ -49,7 +49,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       <div className="relative z-10 flex flex-col items-center w-64 md:w-80">
         <div className="flex justify-between w-full mb-4 text-text-secondary font-mono text-[10px] md:text-xs tracking-widest uppercase">
           <span>Loading Portfolio...</span>
-          <span className="text-white font-bold">{progress}%</span>
+          <span className="text-text-primary font-bold">{progress}%</span>
         </div>
         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden relative">
           <motion.div 

@@ -62,7 +62,7 @@ export default function Experience() {
         <div className="inline-block mb-4">
           <span className="font-caveat text-2xl text-primary transform -rotate-2 inline-block">My Path</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white heading-glow">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-text-primary heading-glow">
           Journey & <span className="text-primary">Achievements</span>
         </h2>
       </div>
@@ -84,9 +84,9 @@ export default function Experience() {
                 {/* Timeline Node */}
                 <div className="absolute w-4 h-4 rounded-full left-[-8.5px] top-1.5 ring-4 ring-background bg-primary shadow-sm" />
                 
-                <div className="glass-card rounded-2xl p-6 md:p-8 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 group">
+                <div className="glass-card rounded-2xl p-6 md:p-8 hover:border-primary/50 hover:shadow-[0_0_20px_var(--color-glow)] transition-all duration-300 group">
                   <span className="text-sm font-bold text-primary mb-2 block">{item.date}</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-primary transition-all">
+                  <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-1 group-hover:text-primary transition-all">
                     {item.title}
                   </h3>
                   <h4 className="text-base text-primary font-medium mb-4">{item.org}</h4>
@@ -114,7 +114,7 @@ export default function Experience() {
             transition={{ duration: 0.8 }}
             className="glass-card rounded-3xl p-6 border border-borders"
           >
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+            <h3 className="text-xl font-bold text-text-primary mb-6 flex items-center gap-3">
               <Trophy className="text-primary" size={20} />
               Hall of Fame
             </h3>
@@ -129,12 +129,12 @@ export default function Experience() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 + (idx * 0.1) }}
-                    className="flex items-start gap-3 p-4 rounded-xl bg-black/40 border border-borders hover:border-primary/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all duration-300 group"
+                    className="flex items-start gap-3 p-4 rounded-xl bg-surface/40 border border-borders hover:border-primary/50 hover:shadow-[0_0_15px_var(--color-glow)] transition-all duration-300 group"
                   >
                     <div className="p-2 rounded-lg bg-white/5 text-text-secondary group-hover:text-primary transition-colors shrink-0">
                       <Icon size={16} />
                     </div>
-                    <p className="text-sm font-medium text-text-secondary leading-relaxed group-hover:text-white transition-colors">
+                    <p className="text-sm font-medium text-text-secondary leading-relaxed group-hover:text-text-primary transition-colors">
                       {item.text}
                     </p>
                   </motion.div>
