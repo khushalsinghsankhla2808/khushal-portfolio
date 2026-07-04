@@ -124,7 +124,7 @@ export default function Certifications() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="hidden md:block fixed z-[100] pointer-events-none"
+            className="hidden md:block fixed z-100 pointer-events-none"
             style={{
               left: mousePos.x + 20,
               top: mousePos.y + 20,
@@ -145,7 +145,7 @@ export default function Certifications() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+            className="md:hidden fixed inset-0 z-100 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
             onClick={() => setSelectedCert(null)}
           >
             <motion.div

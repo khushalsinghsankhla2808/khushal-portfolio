@@ -54,7 +54,7 @@ export const certifications: Certification[] = [
   },
   {
     title: "Getting Started With Data Analytics",
-    issuer: "Great Learning",
+    issuer: "Simpli",
     status: "Earned",
     image: "/Certificates images/Getting Started With Data Analytics.png"
   }

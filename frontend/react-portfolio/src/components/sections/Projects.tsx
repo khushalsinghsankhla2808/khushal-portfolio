@@ -123,7 +123,7 @@ export default function Projects() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-6 py-3 bg-gradient-to-r from-primary to-primary/80 hover:from-primary hover:to-primary/90 text-background font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-[0_0_20px_rgba(var(--color-primary),0.4)] hover:shadow-[0_0_30px_rgba(var(--color-primary),0.6)] flex items-center gap-2"
+                    className="px-6 py-3 bg-linear-to-r from-primary to-primary/80 hover:from-primary hover:to-primary/90 text-background font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-[0_0_20px_rgba(var(--color-primary),0.4)] hover:shadow-[0_0_30px_rgba(var(--color-primary),0.6)] flex items-center gap-2"
                   >
                     View Details <ExternalLink size={16} />
                   </a>
