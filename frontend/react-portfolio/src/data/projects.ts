@@ -14,6 +14,7 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   cardLabel?: string;
+  duration?: string;
   
   // Optional legacy fields for Project Detail page
   businessProblem?: string;
@@ -63,6 +64,7 @@ export const projects: Project[] = [
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/Samsung-Analysis-Report",
     cardLabel: "Solo Project · Power BI",
+    duration: "Jun 2026",
     businessProblem: "Samsung required better visibility into regional logistics and supply chain bottlenecks.",
     objective: "Create an interactive dashboard for executive tracking of regional supply metrics and forecasting.",
     dataset: "Proprietary supply chain data (SQL Database)",
@@ -85,6 +87,7 @@ export const projects: Project[] = [
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/weather-dashboard",
     cardLabel: "Solo Project · Power BI + APIs",
+    duration: "May 2026",
     businessProblem: "Users needed a consolidated view of live environmental conditions and forecasting data that is often scattered across multiple sources.",
     objective: "Build a real-time Power BI dashboard integrated with OpenWeatherMap API to visualize live weather metrics in an accessible format.",
     dataset: "Live JSON data from OpenWeatherMap API",
@@ -107,6 +110,7 @@ export const projects: Project[] = [
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/phone-analysis-dashboard",
     cardLabel: "Solo Project · Power BI",
+    duration: "May 2026",
     businessProblem: "Consumers and retailers lacked a unified analytical tool to compare smartphone specs, market pricing, and performance metrics across top brands.",
     objective: "Design a comprehensive comparison dashboard highlighting market dynamics, pricing trends, and technical specifications.",
     dataset: "Scraped market data of 1000+ smartphones (CSV)",
@@ -129,6 +133,7 @@ export const projects: Project[] = [
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/swiggy-vs-zomato-dashboard",
     cardLabel: "Solo Project · SQL + Power BI",
+    duration: "May 2026",
     businessProblem: "Comparing market share, pricing strategies, and customer satisfaction between two major food delivery apps.",
     objective: "Analyze restaurant data, user ratings, and pricing to deliver a comparative BI dashboard.",
     dataset: "Scraped data from Swiggy and Zomato (CSV)",
@@ -173,6 +178,7 @@ export const projects: Project[] = [
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/Walmart-Sales-Analysis",
     cardLabel: "Solo Project · Python + SQL",
+    duration: "Jun 2026",
     businessProblem: "Walmart needs to optimize inventory turnover and identify seasonal buying patterns to reduce overstock and stockouts.",
     objective: "Analyze 500k+ sales records to build an end-to-end data pipeline that highlights key sales trends and seasonal impacts.",
     dataset: "Walmart historical sales data (500k+ records, CSV format)",
@@ -195,6 +201,7 @@ export const projects: Project[] = [
     screenshots: [],
     githubUrl: "https://github.com/khushalsinghsankhla2808/netflix-movies-and-tv-shows-dashboard",
     cardLabel: "Solo Project · PostgreSQL",
+    duration: "Apr 2026",
     businessProblem: "Content strategists needed data to understand viewing trends and optimal content duration across different global markets.",
     objective: "Perform advanced SQL analysis on Netflix's library to identify content strategies and gaps.",
     dataset: "Netflix Movies and TV Shows dataset from Kaggle",

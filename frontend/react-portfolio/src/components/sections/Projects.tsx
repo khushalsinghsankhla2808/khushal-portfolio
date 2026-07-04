@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../../data/projects';
-import { ExternalLink, Search, Star } from 'lucide-react';
+import { ExternalLink, Search, Star, Clock } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import clsx from 'clsx';
 
@@ -113,9 +113,17 @@ export default function Projects() {
                     <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">
                       {project.cardLabel || `Solo Project · ${project.category}`}
                     </span>
-                    <span className="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-white/10">
-                       {project.category}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-white/10">
+                         {project.category}
+                      </span>
+                      {project.duration && (
+                        <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-white/10">
+                          <Clock size={12} className="text-primary" />
+                          {project.duration}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   
                   <div className="flex gap-2">

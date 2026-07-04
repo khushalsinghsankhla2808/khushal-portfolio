@@ -13,7 +13,7 @@ export const certifications: Certification[] = [
     title: "Data Analytics Essentials",
     issuer: "Cisco Networking Academy",
     status: "Earned",
-    issueDate: "2023",
+    issueDate: "Jun 2026",
     credentialId: "PENDING",
     verifyUrl: "#",
     image: "/Certificates images/Data Analytics Essentiqal.png"
@@ -22,24 +22,28 @@ export const certifications: Certification[] = [
     title: "Data Analytics Projects",
     issuer: "Great Learning",
     status: "Earned",
+    issueDate: "Jul 2026",
     image: "/Certificates images/Data Analytics Projects.png"
   },
   {
     title: "Manage and Secure Power BI",
     issuer: "Microsoft Learn",
     status: "Earned",
+    issueDate: "May 2026",
     image: "/Certificates images/Manage and secure Power BI.png"
   },
   {
     title: "Manage a Microsoft Fabric Environment",
     issuer: "Microsoft Learn",
     status: "Earned",
+    issueDate: "Jun 2026",
     image: "/Certificates images/Manage a Microsoft Fabric environment.png"
   },
   {
     title: "Implement Real-Time Intelligence with Microsoft Fabric",
     issuer: "Microsoft Learn",
     status: "Earned",
+    issueDate: "Jun 2026",
     image: "/Certificates images/Implement Real-Time Intelligence with Microsoft Fabric.png"
   },
   {

@@ -93,7 +93,7 @@ export default function Hero() {
           <div className="hero-buttons flex flex-col sm:flex-row items-center gap-6 mb-12">
             <MagneticButton>
               <a 
-                href="/khushal-singh-sankhla-resume.pdf" 
+                href="/resume/khushal-singh-sankhla-resume.pdf" 
                 download="khushal-singh-sankhla-resume.pdf"
                 className="group relative px-8 py-4 rounded-full font-bold text-base text-white overflow-hidden flex items-center gap-3 transition-all hover:scale-105"
               >
