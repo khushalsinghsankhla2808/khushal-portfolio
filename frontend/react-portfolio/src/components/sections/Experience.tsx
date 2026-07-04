@@ -17,19 +17,9 @@ const timeline = [
     title: "Master of Computer Applications (MCA)",
     org: "JECRC University",
     bullets: [
-      "Specializing in advanced software engineering and cloud technologies.",
-      "Maintaining an 8.65 CGPA.",
-      "Bridging the gap between data analytics and full-stack development."
-    ]
-  },
-  {
-    date: "2023 - 2024",
-    title: "Flagship Projects & Certifications",
-    org: "Independent Projects & Microsoft Learn",
-    bullets: [
-      "Built and deployed Velora AI, a MERN + AI website builder.",
-      "Completed comprehensive data modeling and visualization via Power BI (Samsung & Swiggy vs Zomato).",
-      "Earned Cisco Data Analytics Essentials certification."
+      "Specializing in advanced software engineering and cloud technologies while maintaining an 8.65 CGPA.",
+      "Built and deployed Velora AI, a full-stack MERN + AI website builder, alongside Power BI dashboards for Samsung and a Swiggy vs Zomato analysis.",
+      "Earned the Cisco Data Analytics Essentials certification, bridging data analytics with full-stack development."
     ]
   },
   {
