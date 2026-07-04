@@ -2,15 +2,35 @@ import { motion } from 'framer-motion';
 import { Trophy, CheckCircle, Code, Award, LayoutDashboard, Database, Activity } from 'lucide-react';
 
 const hallOfFame = [
-  { icon: LayoutDashboard, text: "Built 13+ real-world analytics projects across 7 industries" },
-  { icon: Database, text: "Wrote 20+ advanced SQL business queries (Walmart Sales Analysis alone)" },
-  { icon: Activity, text: "Designed a 7-page Power BI supply chain dashboard with forecasting (Samsung)" },
-  { icon: Code, text: "Shipped a live, production MERN + AI product with real users (Velora AI)" },
-  { icon: CheckCircle, text: "Completed Microsoft Fabric learning paths" },
-  { icon: Award, text: "Earned Cisco Data Analytics certification" },
-  { icon: Trophy, text: "Published 13+ open-source projects on GitHub" }
+  {
+    icon: LayoutDashboard,
+    text: "Built 13+ hands-on projects across Data Analytics, Business Intelligence, and Full-Stack Development with AI."
+  },
+  {
+    icon: Database,
+    text: "Developed SQL-based data analysis and reporting solutions using MySQL and PostgreSQL."
+  },
+  {
+    icon: Activity,
+    text: "Designed interactive Power BI dashboards with KPI tracking, forecasting, and actionable business insights."
+  },
+  {
+    icon: Code,
+    text: "Exploring Full-Stack Development with AI through modern web applications and intelligent solutions."
+  },
+  {
+    icon: CheckCircle,
+    text: "Committed to continuous learning through hands-on projects, technical documentation, and practical development."
+  },
+  {
+    icon: Award,
+    text: "Earned professional certifications in Data Analytics and Business Intelligence."
+  },
+  {
+    icon: Trophy,
+    text: "Published 14 GitHub repositories showcasing projects, experiments, and my continuous learning journey."
+  }
 ];
-
 const timeline = [
   {
     date: "2025 - 2027",
@@ -25,24 +45,24 @@ const timeline = [
   {
     date: "2022 - 2025",
     title: "Bachelor of Computer Applications (BCA)",
-    org: "Jai Narain Vyas University",
+    org: "Jai Narain Vyas University, Jodhpur",
     bullets: [
       "Developed foundational knowledge in programming and database management.",
       "Graduated with 72.53%.",
-      "Started journey into SQL and Python for data analysis."
+      "Started journey into SQL and Excel for data analysis."
     ]
   }
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 px-4 max-w-7xl mx-auto relative z-10 border-t border-white/5">
+    <section id="experience" className="py-32 px-4 max-w-7xl mx-auto relative z-10 border-t border-borders">
       
       <div className="text-center mb-16">
         <div className="inline-block mb-4">
           <span className="font-caveat text-2xl text-primary transform -rotate-2 inline-block">My Path</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white heading-glow">
           Journey & <span className="text-primary">Achievements</span>
         </h2>
       </div>
@@ -51,7 +71,7 @@ export default function Experience() {
         
         {/* Left Column: Timeline */}
         <div className="lg:col-span-8">
-          <div className="relative border-l border-white/10 ml-4 md:ml-0">
+          <div className="relative border-l border-borders ml-4 md:ml-0">
             {timeline.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -64,7 +84,7 @@ export default function Experience() {
                 {/* Timeline Node */}
                 <div className="absolute w-4 h-4 rounded-full left-[-8.5px] top-1.5 ring-4 ring-background bg-primary shadow-sm" />
                 
-                <div className="glass-card rounded-2xl p-6 md:p-8 hover:border-white/10 transition-colors group">
+                <div className="glass-card rounded-2xl p-6 md:p-8 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all duration-300 group">
                   <span className="text-sm font-bold text-primary mb-2 block">{item.date}</span>
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-primary transition-all">
                     {item.title}
@@ -92,7 +112,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="glass-card rounded-3xl p-6 border border-white/5"
+            className="glass-card rounded-3xl p-6 border border-borders"
           >
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
               <Trophy className="text-primary" size={20} />
@@ -109,7 +129,7 @@ export default function Experience() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 + (idx * 0.1) }}
-                    className="flex items-start gap-3 p-4 rounded-xl bg-black/40 border border-white/5 hover:border-primary/30 transition-colors group"
+                    className="flex items-start gap-3 p-4 rounded-xl bg-black/40 border border-borders hover:border-primary/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all duration-300 group"
                   >
                     <div className="p-2 rounded-lg bg-white/5 text-text-secondary group-hover:text-primary transition-colors shrink-0">
                       <Icon size={16} />

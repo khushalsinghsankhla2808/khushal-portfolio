@@ -57,7 +57,7 @@ export default function Hero() {
             Available for new opportunities
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-[80px] leading-[1.05] font-bold mb-6 tracking-tighter text-white">
+          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-[80px] leading-[1.05] font-bold mb-6 tracking-tighter text-white heading-glow">
             Hi, I'm <br className="hidden md:block" />
             <span className="text-primary">Khushal Singh</span> <br className="hidden md:block" />
             Sankhla.
@@ -84,20 +84,20 @@ export default function Hero() {
             <a 
               href="/resume/khushal-singh-sankhla-resume.pdf" 
               download="khushal-singh-sankhla-resume.pdf"
-              className="group relative px-8 py-4 rounded-full font-bold text-base text-white bg-primary hover:bg-[#2563EB] shadow-md hover:shadow-[0_8px_20px_rgba(37,99,235,0.3)] flex items-center gap-3 transition-all duration-250 hover:scale-[1.03]"
+              className="group relative px-8 py-4 rounded-full font-bold text-base text-white bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] flex items-center gap-3 transition-all duration-300 hover:scale-[1.03]"
             >
               <span className="relative z-10">Download Resume</span>
               <Download size={18} className="relative z-10 group-hover:translate-y-1 transition-transform" />
             </a>
 
             <div className="flex items-center gap-4">
-              <a href="#about" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-250 border border-white/10 group hover:scale-[1.03]">
+              <a href="#about" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-300 group hover:scale-[1.03]">
                 <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform text-primary" />
               </a>
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-white transition-colors duration-250 border border-white/10 hover:scale-[1.03]">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-white transition-colors duration-300 hover:scale-[1.03]">
                 <FaGithub size={22} />
               </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-250 border border-white/10 hover:scale-[1.03]">
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-300 hover:scale-[1.03]">
                 <FaLinkedin size={22} />
               </a>
             </div>
@@ -112,7 +112,7 @@ export default function Hero() {
           className="relative w-full aspect-square max-w-[500px] mx-auto lg:ml-auto mt-12 lg:mt-0"
         >
           {/* Image Container */}
-          <div className="absolute inset-4 rounded-full p-1 border border-white/10 overflow-hidden shadow-2xl group">
+          <div className="absolute inset-4 rounded-full p-1 border border-white/5 overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.15)] group">
             <div className="w-full h-full rounded-full overflow-hidden bg-black relative flex items-center justify-center">
               <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent z-10" />
               <img 
@@ -128,9 +128,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: -20, rotate: -5 }}
             animate={{ opacity: 1, y: 0, rotate: -5 }}
             transition={{ delay: 2.4, duration: 0.8, ease: "easeOut" }}
-            className="absolute top-4 right-0 z-20 glass-card rounded-2xl p-4 shadow-xl border border-white/10 bg-cards"
+            className="absolute top-4 right-0 z-20 glass-card rounded-2xl p-4"
           >
-            <div className="text-2xl font-bold text-white leading-none mb-1">13+</div>
+            <div className="text-2xl font-bold text-white leading-none mb-1">10+</div>
             <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Projects Completed</div>
           </motion.div>
 
@@ -138,9 +138,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20, rotate: 5 }}
             animate={{ opacity: 1, y: 0, rotate: 5 }}
             transition={{ delay: 2.6, duration: 0.8, ease: "easeOut" }}
-            className="absolute bottom-4 left-0 z-20 glass-card rounded-2xl p-4 shadow-xl border border-white/10 bg-cards"
+            className="absolute bottom-4 left-0 z-20 glass-card rounded-2xl p-4"
           >
-            <div className="text-2xl font-bold text-white leading-none mb-1">20+</div>
+            <div className="text-2xl font-bold text-white leading-none mb-1">13+</div>
             <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">GitHub Repos</div>
           </motion.div>
         </motion.div>

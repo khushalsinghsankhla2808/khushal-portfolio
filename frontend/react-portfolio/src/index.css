@@ -1,19 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #09090B;
-  --color-secondary-background: #111827;
-  --color-cards: #18181B;
-  --color-primary: #3B82F6;
-  --color-secondary: #3B82F6;
-  --color-accent: #3B82F6;
-  --color-blue: #3B82F6;
+  --color-background: #090512;
+  --color-secondary-background: #120A1F;
+  --color-surface: #181128;
+  --color-cards: #1F1633;
+  
+  --color-primary: #A855F7;
+  --color-secondary: #C084FC;
+  --color-accent: #A855F7;
+  --color-highlight: #E879F9;
+  
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
-  --color-text-primary: #FAFAFA;
-  --color-text-secondary: #A1A1AA;
-  --color-borders: rgba(255, 255, 255, 0.08);
+  
+  --color-text-primary: #F8F8FF;
+  --color-text-secondary: #B8B4D9;
+  --color-text-muted: #8F88B5;
+  
+  --color-borders: rgba(180, 140, 255, 0.12);
+  --color-glow: rgba(168, 85, 247, 0.35);
+
   --font-sans: "Geist", "Inter", "Space Grotesk", sans-serif;
 }
 
@@ -37,24 +45,31 @@
 
 @layer utilities {
   .glass-card {
-    background-color: var(--color-cards);
+    background-color: rgba(31, 22, 51, 0.6); /* --color-cards with transparency */
     border: 1px solid var(--color-borders);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 4px 16px -4px rgba(168, 85, 247, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   
   .bg-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
   }
 
   .bg-grid {
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-image: linear-gradient(to right, rgba(180, 140, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(180, 140, 255, 0.02) 1px, transparent 1px);
   }
 
   .bg-radial-glow {
-    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12), transparent 60%);
+    background: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.15), transparent 60%);
+  }
+  
+  .bg-radial-ambient {
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
   }
 
   .text-gradient {
@@ -62,5 +77,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    background-image: linear-gradient(to right, var(--color-text-primary), var(--color-text-secondary));
+  }
+  
+  .heading-glow {
+    text-shadow: 0 0 24px rgba(168, 85, 247, 0.25);
   }
 }

@@ -49,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 px-4 max-w-7xl mx-auto relative z-10 border-t border-white/5">
+    <section id="contact" className="py-32 px-4 max-w-7xl mx-auto relative z-10 border-t border-borders">
       <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
         
         {/* Left Column - Headers & Socials */}
@@ -59,7 +59,7 @@ export default function Contact() {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Contact
             </p>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter heading-glow">
               Let's build <br />
               something <span className="text-primary">great.</span>
             </h2>
@@ -69,7 +69,7 @@ export default function Contact() {
           </div>
 
           <div className="flex flex-col gap-8">
-            <div className="glass-card p-6 rounded-3xl border border-white/5 w-fit">
+            <div className="glass-card p-6 rounded-3xl border border-borders w-fit">
               <span className="text-text-secondary text-xs mb-2 uppercase tracking-widest font-bold">Local Time</span>
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-success animate-pulse" />
@@ -79,15 +79,15 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-white/5 hover:border-white/20 hover:bg-white/10 hover:text-white text-text-secondary transition-all">
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] text-text-secondary transition-all duration-300">
                 <FaLinkedin size={18} />
                 <span className="text-sm font-bold">LinkedIn</span>
               </a>
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-white/5 hover:border-white/20 hover:bg-white/10 hover:text-white text-text-secondary transition-all">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] text-text-secondary transition-all duration-300">
                 <FaGithub size={18} />
                 <span className="text-sm font-bold">GitHub</span>
               </a>
-              <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-white/5 hover:border-white/20 hover:bg-white/10 hover:text-white text-text-secondary transition-all">
+              <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 px-5 py-3 glass-card rounded-full border border-borders hover:border-primary/50 hover:bg-primary/5 hover:text-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] text-text-secondary transition-all duration-300">
                 <Mail size={18} />
                 <span className="text-sm font-bold">Email</span>
               </a>
@@ -96,7 +96,7 @@ export default function Contact() {
         </div>
 
         {/* Right Column - Form */}
-        <div className="glass-card p-8 md:p-12 rounded-[32px] border border-white/5 relative overflow-hidden">
+        <div className="glass-card p-8 md:p-12 rounded-[32px] border border-borders relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
           <AnimatePresence mode="wait">
             {isSuccess ? (
               <motion.div 
@@ -131,7 +131,7 @@ export default function Contact() {
                     {...register('name')}
                     id="name"
                     disabled={isSubmitting}
-                    className="peer w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
+                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
                     placeholder="Name"
                   />
                   <label htmlFor="name" className="absolute left-0 -top-3.5 text-xs text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text">
@@ -146,7 +146,7 @@ export default function Contact() {
                     id="email"
                     type="email"
                     disabled={isSubmitting}
-                    className="peer w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
+                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors disabled:opacity-50"
                     placeholder="Email"
                   />
                   <label htmlFor="email" className="absolute left-0 -top-3.5 text-xs text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text">
@@ -161,7 +161,7 @@ export default function Contact() {
                     id="message"
                     disabled={isSubmitting}
                     rows={4}
-                    className="peer w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors resize-none disabled:opacity-50"
+                    className="peer w-full bg-transparent border-b border-borders px-0 py-3 text-white placeholder-transparent focus:outline-hidden focus:border-primary transition-colors resize-none disabled:opacity-50"
                     placeholder="Message"
                   />
                   <label htmlFor="message" className="absolute left-0 -top-3.5 text-xs text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text">
@@ -173,7 +173,7 @@ export default function Contact() {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="mt-4 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 group disabled:opacity-70"
+                  className="mt-4 px-8 py-4 bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] text-white font-bold rounded-full transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70"
                 >
                   {isSubmitting ? (
                     <>

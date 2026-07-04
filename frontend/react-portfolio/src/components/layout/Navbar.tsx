@@ -53,7 +53,7 @@ export default function Navbar() {
       className={clsx(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b",
         scrolled 
-          ? "bg-background/80 backdrop-blur-xl border-white/10 py-4 shadow-lg shadow-black/20" 
+          ? "bg-surface/80 backdrop-blur-xl border-borders py-4 shadow-xl shadow-black/40" 
           : "bg-transparent border-transparent py-6"
       )}
     >
@@ -121,7 +121,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="hover"
-            className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-primary hover:bg-[#2563EB] shadow-md hover:shadow-[0_8px_20px_rgba(37,99,235,0.3)] transition-all duration-250 shrink-0 hover:scale-[1.03]"
+            className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all duration-300 shrink-0 hover:scale-[1.03]"
           >
             <Download size={14} /> Resume
           </a>
@@ -129,7 +129,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <div className="xl:hidden flex items-center shrink-0">
-          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" className="text-white p-2 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
+          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" className="text-white p-2 bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors">
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -143,7 +143,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="xl:hidden absolute top-[110%] left-4 right-4 bg-secondary-background border border-white/10 p-6 flex flex-col gap-4 rounded-3xl shadow-2xl"
+            className="xl:hidden absolute top-[110%] left-4 right-4 bg-cards/95 backdrop-blur-2xl border border-borders p-6 flex flex-col gap-4 rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.6)]"
           >
             {navLinks.map(link => (
               <a 
@@ -152,7 +152,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)} 
                 data-cursor="hover"
                 className={clsx(
-                  "text-lg font-bold tracking-wide py-2 border-b border-white/5",
+                  "text-lg font-bold tracking-wide py-2 border-b border-borders",
                   activeSection === link.id ? "text-secondary" : "text-text-secondary hover:text-white"
                 )}
               >
@@ -173,7 +173,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-primary shadow-md"
+                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-[#8B5CF6] to-[#A855F7] shadow-[0_0_15px_rgba(168,85,247,0.3)]"
               >
                 <Download size={16} /> Resume
               </a>

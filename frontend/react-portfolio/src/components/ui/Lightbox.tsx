@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 
@@ -12,6 +12,16 @@ interface LightboxProps {
 
 export default function Lightbox({ images, currentIndex, isOpen, onClose, onNavigate }: LightboxProps) {
   
+  const handleNext = useCallback(() => {
+    if (images.length <= 1) return;
+    onNavigate((currentIndex + 1) % images.length);
+  }, [images.length, currentIndex, onNavigate]);
+
+  const handlePrev = useCallback(() => {
+    if (images.length <= 1) return;
+    onNavigate((currentIndex - 1 + images.length) % images.length);
+  }, [images.length, currentIndex, onNavigate]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
@@ -31,17 +41,7 @@ export default function Lightbox({ images, currentIndex, isOpen, onClose, onNavi
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, currentIndex, images.length]);
-
-  const handleNext = () => {
-    if (images.length <= 1) return;
-    onNavigate((currentIndex + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    if (images.length <= 1) return;
-    onNavigate((currentIndex - 1 + images.length) % images.length);
-  };
+  }, [isOpen, onClose, handleNext, handlePrev]);
 
   return (
     <AnimatePresence>

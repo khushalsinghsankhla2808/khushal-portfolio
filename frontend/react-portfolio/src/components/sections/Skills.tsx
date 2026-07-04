@@ -1,110 +1,191 @@
-import { motion } from 'framer-motion';
-import { coreSkills, learningSkills } from '../../data/skills';
+import { motion, type Variants } from "framer-motion";
+import { coreSkills, learningSkills } from "../../data/skills";
 
 export default function Skills() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
-      }
-    }
+        staggerChildren: 0.06,
+      },
+    },
   };
 
-  const itemVariants: any = {
-    hidden: { opacity: 0, scale: 0.9, y: 10 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.9,
+      y: 12,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: {
+        duration: 0.55,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
-    <section id="skills" className="py-32 relative z-10 border-t border-white/5 bg-background">
+    <section
+      id="skills"
+      className="py-32 relative z-10 border-t border-borders bg-background"
+    >
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        
-        {/* Section Header */}
+
+        {/* Header */}
+
         <div className="text-center mb-20">
+
           <div className="inline-block mb-4">
-            <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">Skills & Technologies</span>
+            <span className="font-caveat text-2xl text-accent -rotate-2 inline-block">
+              Skills & Technologies
+            </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white">
-            Expertise & <span className="text-primary">Growth</span>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white heading-glow">
+            Technical <span className="text-primary">Expertise</span>
           </h2>
-          <p className="text-text-secondary text-lg font-light max-w-2xl mx-auto">
-            The technologies I use with confidence and the modern tools I'm currently exploring.
+
+          <p className="max-w-3xl mx-auto text-lg text-text-secondary leading-relaxed font-light">
+            My toolkit reflects both the technologies I work with confidently
+            and the modern technologies I'm actively learning through
+            hands-on projects and continuous exploration.
           </p>
+
         </div>
 
-        {/* SECTION 1: Core Skills */}
+        {/* Technical Expertise */}
+
         <div className="mb-24">
-          <div className="text-center md:text-left mb-10">
-            <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center md:justify-start gap-3">
+
+          <div className="mb-10">
+
+            <h3 className="text-3xl font-bold text-white flex items-center gap-3 mb-4">
+
               <span className="w-3 h-3 rounded-full bg-primary" />
-              Core Skills
+
+              Technical Expertise
+
             </h3>
-            <p className="text-text-secondary font-light text-lg">
-              Technologies I use to build data-driven solutions and business intelligence applications.
+
+            <p className="text-text-secondary text-lg leading-relaxed">
+              Technologies I use to build data-driven solutions, interactive
+              dashboards, business intelligence reports, and modern
+              applications.
             </p>
+
           </div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4"
+            viewport={{ once: true }}
+            className="flex flex-wrap gap-4"
           >
-            {coreSkills.map((skill, idx) => (
+            {coreSkills.map((skill, index) => (
               <motion.div
-                key={`${skill}-${idx}`}
+                key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -4 }}
-                className="flex items-center gap-2 px-5 py-3 rounded-full bg-cards border border-white/10 hover:border-primary/50 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(37,99,235,0.15)] transition-all duration-250 cursor-default font-medium text-text-primary md:text-lg"
+                whileHover={{
+                  scale: 1.06,
+                  y: -5,
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+                className="group flex items-center gap-3 px-5 py-3 rounded-full
+                bg-cards border border-borders
+                hover:border-primary/50
+                hover:bg-primary/5
+                hover:shadow-[0_0_25px_rgba(168,85,247,0.18)]
+                transition-all duration-300"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-80" />
-                {skill}
+
+                <span className="w-2 h-2 rounded-full bg-primary group-hover:scale-125 transition-transform" />
+
+                <span className="text-text-primary font-medium">
+                  {skill}
+                </span>
+
               </motion.div>
             ))}
           </motion.div>
+
         </div>
 
-        {/* SECTION 2: Currently Learning & Exploring */}
+        {/* Learning Journey */}
+
         <div>
-          <div className="text-center md:text-left mb-10">
-            <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center md:justify-start gap-3">
+
+          <div className="mb-10">
+
+            <h3 className="text-3xl font-bold text-white flex items-center gap-3 mb-4">
+
               <span className="w-3 h-3 rounded-full bg-secondary" />
-              Currently Learning & Exploring
+
+              Learning Journey
+
             </h3>
-            <p className="text-text-secondary font-light text-lg">
-              I'm continuously expanding my skills in modern web development and AI by building projects and exploring new technologies.
+
+            <p className="text-text-secondary text-lg leading-relaxed">
+              I believe continuous learning is essential in technology. These
+              are the areas I'm currently exploring by building projects,
+              experimenting with new tools, and strengthening my practical
+              skills.
             </p>
+
           </div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4"
+            viewport={{ once: true }}
+            className="flex flex-wrap gap-4"
           >
-            {learningSkills.map((skill, idx) => (
+            {learningSkills.map((skill, index) => (
               <motion.div
-                key={`${skill}-${idx}`}
+                key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -4 }}
-                className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 px-5 py-3 rounded-full bg-cards border border-white/10 hover:border-secondary/50 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all duration-250 cursor-default font-medium text-text-primary md:text-lg"
+                whileHover={{
+                  scale: 1.06,
+                  y: -5,
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+                className="group flex items-center gap-3 px-5 py-3 rounded-full
+                bg-cards border border-borders
+                hover:border-secondary/50
+                hover:bg-secondary/5
+                hover:shadow-[0_0_25px_rgba(192,132,252,0.18)]
+                transition-all duration-300"
               >
-                {skill}
-                <span className="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-[10px] uppercase tracking-wider font-bold">
-                  Learning
+
+                <span className="text-text-primary font-medium">
+                  {skill}
                 </span>
+
+                <span className="px-2.5 py-1 rounded-full
+                bg-secondary/10
+                border border-secondary/20
+                text-secondary
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-wider">
+                  In Progress
+                </span>
+
               </motion.div>
             ))}
           </motion.div>
+
         </div>
 
       </div>
