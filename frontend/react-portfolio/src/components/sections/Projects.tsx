@@ -107,29 +107,7 @@ export default function Projects() {
                 </div>
               )}
 
-              {/* Cover Image & Overlay */}
-              <div className="relative overflow-hidden w-full h-64 shrink-0 border-b border-white/5">
-                {project.coverImage ? (
-                  <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" loading="lazy" />
-                ) : (
-                  <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                    <span className="text-white/20 font-bold tracking-widest uppercase text-xs">Thumbnail</span>
-                  </div>
-                )}
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                  <a 
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-6 py-3 bg-linear-to-r from-primary to-primary/80 hover:from-primary hover:to-primary/90 text-background font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-[0_0_20px_rgba(var(--color-primary),0.4)] hover:shadow-[0_0_30px_rgba(var(--color-primary),0.6)] flex items-center gap-2"
-                  >
-                    View Details <ExternalLink size={16} />
-                  </a>
-                </div>
-              </div>
-              
+
               <div className="p-8 flex-1 flex flex-col relative z-20">
                 <div className="flex justify-between items-start mb-6">
                   <div>
