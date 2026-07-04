@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Download, ChevronRight } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo } from '../../data/personalInfo';
@@ -15,7 +15,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 1.4 } // Delay to allow loading screen to fade out
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
   }
 };
 
@@ -31,6 +31,9 @@ const itemVariants: any = {
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
+  const [isPhotoAnimated, setIsPhotoAnimated] = useState(false);
+  const [isNameAnimated, setIsNameAnimated] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,16 +51,31 @@ export default function Hero() {
         <motion.div 
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="flex flex-col items-center text-center lg:items-start lg:text-left pt-10 lg:pt-0"
+          animate={prefersReducedMotion || isNameAnimated ? "visible" : "hidden"}
+          className="flex flex-col items-center text-center lg:items-start lg:text-left pt-10 lg:pt-0 relative z-10"
         >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-white/10 glass-card text-xs font-medium uppercase tracking-widest text-text-secondary">
             <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
             Available for new opportunities
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-[80px] leading-[1.05] font-bold mb-6 tracking-tighter text-white heading-glow">
+          <motion.h1 
+            initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: 100 }}
+            animate={
+              prefersReducedMotion
+                ? { opacity: 1 }
+                : isPhotoAnimated
+                  ? { opacity: 1, x: 0 }
+                  : { opacity: 0, x: 100 }
+            }
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            onAnimationComplete={() => {
+              if (isPhotoAnimated && !prefersReducedMotion) {
+                setIsNameAnimated(true);
+              }
+            }}
+            className="text-5xl md:text-7xl lg:text-[80px] leading-[1.05] font-bold mb-6 tracking-tighter text-white heading-glow"
+          >
             Hi, I'm <br className="hidden md:block" />
             <span className="text-primary">Khushal Singh</span> <br className="hidden md:block" />
             Sankhla.
@@ -106,10 +124,13 @@ export default function Hero() {
 
         {/* Right: Circular Image & Floating Rings */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ delay: 1.8, duration: 1.2, ease: "easeOut" }}
-          className="relative w-full aspect-square max-w-[500px] mx-auto lg:ml-auto mt-12 lg:mt-0"
+          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+          animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          onAnimationComplete={() => {
+            if (!prefersReducedMotion) setIsPhotoAnimated(true);
+          }}
+          className="relative w-full aspect-square max-w-[500px] mx-auto lg:ml-auto mt-12 lg:mt-0 z-20"
         >
           {/* Image Container */}
           <div className="absolute inset-4 rounded-full p-1 border border-white/5 overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.15)] group">
@@ -126,8 +147,8 @@ export default function Hero() {
           {/* Pinned Stats */}
           <motion.div 
             initial={{ opacity: 0, y: -20, rotate: -5 }}
-            animate={{ opacity: 1, y: 0, rotate: -5 }}
-            transition={{ delay: 2.4, duration: 0.8, ease: "easeOut" }}
+            animate={prefersReducedMotion || isNameAnimated ? { opacity: 1, y: 0, rotate: -5 } : { opacity: 0, y: -20, rotate: -5 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
             className="absolute top-4 right-0 z-20 glass-card rounded-2xl p-4"
           >
             <div className="text-2xl font-bold text-white leading-none mb-1">10+</div>
@@ -136,8 +157,8 @@ export default function Hero() {
 
           <motion.div 
             initial={{ opacity: 0, y: 20, rotate: 5 }}
-            animate={{ opacity: 1, y: 0, rotate: 5 }}
-            transition={{ delay: 2.6, duration: 0.8, ease: "easeOut" }}
+            animate={prefersReducedMotion || isNameAnimated ? { opacity: 1, y: 0, rotate: 5 } : { opacity: 0, y: 20, rotate: 5 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
             className="absolute bottom-4 left-0 z-20 glass-card rounded-2xl p-4"
           >
             <div className="text-2xl font-bold text-white leading-none mb-1">13+</div>
