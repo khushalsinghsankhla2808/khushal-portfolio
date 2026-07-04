@@ -1,85 +1,110 @@
 import { motion } from 'framer-motion';
-import { skillCategories } from '../../data/skills';
-
-// Map categories to specific dot colors for the pill cloud
-const categoryColors: Record<string, string> = {
-  "Programming": "bg-primary",
-  "Business Intelligence": "bg-secondary",
-  "Databases": "bg-accent",
-  "Data Analytics": "bg-success",
-  "MERN Stack": "bg-warning",
-  "Tools": "bg-white"
-};
-
-// Flatten skills and assign properties for visual rhythm
-const flatSkills = skillCategories.flatMap((category, catIdx) => 
-  category.skills.map((skill, skillIdx) => {
-    // Generate some pseudo-random visual rhythm (size/weight) based on index
-    const isLarge = (catIdx + skillIdx) % 5 === 0;
-    const isMedium = (catIdx + skillIdx) % 3 === 0 && !isLarge;
-    
-    return {
-      name: skill,
-      category: category.title,
-      colorClass: categoryColors[category.title] || "bg-primary",
-      textSize: isLarge ? "text-lg md:text-xl" : isMedium ? "text-base md:text-lg" : "text-sm md:text-base",
-      fontWeight: isLarge ? "font-bold" : isMedium ? "font-semibold" : "font-medium"
-    };
-  })
-);
-
-// Shuffle array for a more organic "cloud" look
-const shuffledSkills = [...flatSkills].sort((a, b) => 
-  (a.name.length * a.category.length) % 3 - (b.name.length * b.category.length) % 3
-);
+import { coreSkills, learningSkills } from '../../data/skills';
 
 export default function Skills() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      }
+    }
+  };
+
+  const itemVariants: any = {
+    hidden: { opacity: 0, scale: 0.9, y: 10 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section id="skills" className="py-32 relative z-10 border-t border-white/5">
-      <div className="max-w-5xl mx-auto px-4 md:px-8">
+    <section id="skills" className="py-32 relative z-10 border-t border-white/5 bg-background">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
         
-        <div className="text-center mb-16">
+        {/* Section Header */}
+        <div className="text-center mb-20">
           <div className="inline-block mb-4">
-            <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">My Toolkit</span>
+            <span className="font-caveat text-2xl text-accent transform -rotate-2 inline-block">Skills & Technologies</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-white">
-            Technologies & <span className="text-primary">Skills</span>
+            Expertise & <span className="text-primary">Growth</span>
           </h2>
           <p className="text-text-secondary text-lg font-light max-w-2xl mx-auto">
-            A comprehensive overview of the tools, languages, and frameworks I use to transform data into decisions and build scalable applications.
+            The technologies I use with confidence and the modern tools I'm currently exploring.
           </p>
         </div>
 
-        {/* Legend */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">
-          {Object.entries(categoryColors).map(([cat, colorClass]) => (
-            <div key={cat} className="flex items-center gap-2 text-xs md:text-sm text-text-secondary font-medium">
-              <span className={`w-2 h-2 rounded-full ${colorClass}`} />
-              {cat}
-            </div>
-          ))}
+        {/* SECTION 1: Core Skills */}
+        <div className="mb-24">
+          <div className="text-center md:text-left mb-10">
+            <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center md:justify-start gap-3">
+              <span className="w-3 h-3 rounded-full bg-primary" />
+              Core Skills
+            </h3>
+            <p className="text-text-secondary font-light text-lg">
+              Technologies I use to build data-driven solutions and business intelligence applications.
+            </p>
+          </div>
+
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4"
+          >
+            {coreSkills.map((skill, idx) => (
+              <motion.div
+                key={`${skill}-${idx}`}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="flex items-center gap-2 px-5 py-3 rounded-full bg-cards border border-white/10 hover:border-primary/50 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(37,99,235,0.15)] transition-all duration-250 cursor-default font-medium text-text-primary md:text-lg"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-80" />
+                {skill}
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Pill Cloud */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-          {shuffledSkills.map((skill, idx) => (
-            <motion.div
-              key={`${skill.name}-${idx}`}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                delay: (idx % 15) * 0.05, 
-                duration: 0.6,
-                ease: "easeOut"
-              }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/3 border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all cursor-default ${skill.textSize} ${skill.fontWeight} text-text-primary`}
-            >
-              <span className={`w-2 h-2 rounded-full ${skill.colorClass}`} />
-              {skill.name}
-            </motion.div>
-          ))}
+        {/* SECTION 2: Currently Learning & Exploring */}
+        <div>
+          <div className="text-center md:text-left mb-10">
+            <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center md:justify-start gap-3">
+              <span className="w-3 h-3 rounded-full bg-secondary" />
+              Currently Learning & Exploring
+            </h3>
+            <p className="text-text-secondary font-light text-lg">
+              I'm continuously expanding my skills in modern web development and AI by building projects and exploring new technologies.
+            </p>
+          </div>
+
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4"
+          >
+            {learningSkills.map((skill, idx) => (
+              <motion.div
+                key={`${skill}-${idx}`}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 px-5 py-3 rounded-full bg-cards border border-white/10 hover:border-secondary/50 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all duration-250 cursor-default font-medium text-text-primary md:text-lg"
+              >
+                {skill}
+                <span className="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-[10px] uppercase tracking-wider font-bold">
+                  Learning
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
       </div>

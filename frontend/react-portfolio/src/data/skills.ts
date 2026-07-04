@@ -1,31 +1,38 @@
-export interface SkillCategory {
-  title: string;
-  skills: string[];
-}
+export const coreSkills: string[] = [
+  "Python",
+  "SQL",
+  "Power BI",
+  "DAX",
+  "Power Query",
+  "Dashboard Development",
+  "KPI Dashboard Design",
+  "Business Intelligence",
+  "Data Modeling",
+  "Data Storytelling",
+  "Data Visualization",
+  "Pandas",
+  "NumPy",
+  "Exploratory Data Analysis (EDA)",
+  "Statistical Analysis",
+  "PostgreSQL",
+  "MySQL",
+  "Git",
+  "GitHub"
+];
 
-export const skillCategories: SkillCategory[] = [
-  {
-    title: "Programming",
-    skills: ["Python", "SQL", "JavaScript", "Java", "C++", "HTML", "CSS"]
-  },
-  {
-    title: "Business Intelligence",
-    skills: ["Power BI", "DAX", "Power Query", "Microsoft Fabric", "KPI Dashboard Design", "Data Modeling", "Star Schema", "Business Intelligence", "Dashboard Development", "Data Storytelling"]
-  },
-  {
-    title: "Databases",
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "SQLAlchemy"]
-  },
-  {
-    title: "Data Analytics",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Data Cleaning", "EDA", "Data Transformation", "Statistical Analysis", "Business Analytics", "Data Visualization"]
-  },
-  {
-    title: "MERN Stack",
-    skills: ["MongoDB", "Express.js", "React", "Node.js", "REST APIs", "Tailwind CSS", "Bootstrap", "Responsive Design", "Authentication", "CRUD Applications"]
-  },
-  {
-    title: "Tools",
-    skills: ["Git", "GitHub", "VS Code", "pgAdmin", "SQL Workbench", "Postman", "Microsoft Excel"]
-  }
+export const learningSkills: string[] = [
+  "JavaScript",
+  "React",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "Tailwind CSS",
+  "TypeScript",
+  "Next.js",
+  "AI Integration",
+  "Prompt Engineering",
+  "LLM APIs",
+  "Retrieval-Augmented Generation (RAG)",
+  "Generative AI",
+  "Machine Learning Fundamentals"
 ];
