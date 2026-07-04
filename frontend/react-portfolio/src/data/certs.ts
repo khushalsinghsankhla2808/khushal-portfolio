@@ -57,25 +57,5 @@ export const certifications: Certification[] = [
     issuer: "Great Learning",
     status: "Earned",
     image: "/Certificates images/Getting Started With Data Analytics.png"
-  },
-  {
-    title: "Google Data Analytics Professional Certificate",
-    issuer: "Google",
-    status: "In Progress"
-  },
-  {
-    title: "Microsoft Power BI Data Analyst (PL-300)",
-    issuer: "Microsoft",
-    status: "In Progress"
-  },
-  {
-    title: "Microsoft Fabric Analytics Engineer",
-    issuer: "Microsoft",
-    status: "In Progress"
-  },
-  {
-    title: "Azure Data Engineer",
-    issuer: "Microsoft",
-    status: "In Progress"
   }
 ];

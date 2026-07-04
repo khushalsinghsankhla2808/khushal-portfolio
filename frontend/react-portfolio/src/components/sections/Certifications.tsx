@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import { certifications } from '../../data/certs';
-import { Award, ShieldCheck, Rocket, ExternalLink } from 'lucide-react';
+import { Award, ShieldCheck, Rocket, ExternalLink, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
 
 export default function Certifications() {
   // We duplicate the list twice so it can loop seamlessly in a CSS marquee.
   const marqueeItems = [...certifications, ...certifications, ...certifications];
+
+  const [hoveredCert, setHoveredCert] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
 
   // Pick an icon based on title keywords just to add variety
   const getIcon = (title: string) => {
@@ -45,7 +55,11 @@ export default function Certifications() {
             return (
               <div 
                 key={`${cert.title}-${idx}`} 
-                className="w-[350px] shrink-0 glass-card rounded-3xl p-6 border border-white/5 flex flex-col relative group transition-colors hover:border-white/20 hover:bg-white/3"
+                onMouseEnter={() => setHoveredCert(cert.image || null)}
+                onMouseLeave={() => setHoveredCert(null)}
+                onMouseMove={handleMouseMove}
+                onClick={() => setSelectedCert(cert.image || null)}
+                className="w-[350px] shrink-0 glass-card rounded-3xl p-6 border border-white/5 flex flex-col relative group transition-colors hover:border-white/20 hover:bg-white/5 cursor-pointer"
               >
                 {/* Status chip */}
                 <div className="absolute top-6 right-6">
@@ -89,6 +103,7 @@ export default function Certifications() {
                       href={cert.verifyUrl} 
                       target="_blank" 
                       rel="noreferrer"
+                      onClick={e => e.stopPropagation()}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-white/10 hover:bg-primary border border-white/10 px-3 py-1.5 rounded-full transition-colors"
                     >
                       Verify <ExternalLink size={12} />
@@ -100,6 +115,58 @@ export default function Certifications() {
           })}
         </div>
       </div>
+
+      {/* Desktop Floating Preview */}
+      <AnimatePresence>
+        {hoveredCert && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="hidden md:block fixed z-[100] pointer-events-none"
+            style={{
+              left: mousePos.x + 20,
+              top: mousePos.y + 20,
+            }}
+          >
+            <div className="p-3 bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl">
+              <img src={hoveredCert} alt="Certificate Preview" className="w-[400px] h-auto rounded-xl object-contain shadow-lg" loading="lazy" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Modal */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setSelectedCert(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-3 w-full max-w-md relative shadow-2xl"
+              onClick={e => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setSelectedCert(null)}
+                className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
+              >
+                <X size={24} />
+              </button>
+              <img src={selectedCert} alt="Certificate Preview" className="w-full h-auto rounded-xl shadow-lg" loading="lazy" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <style>{`
         @keyframes marquee {
