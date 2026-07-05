@@ -157,3 +157,36 @@
   --color-borders: rgba(88, 28, 135, 0.12);
   --color-glow: rgba(168, 85, 247, 0.2);
 }
+
+/* Footer Link Animated Underline */
+footer a {
+  position: relative;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  footer a::after {
+    transition: width 0.25s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  footer a::after {
+    transition: none;
+  }
+}
+
+footer a:hover::after {
+  width: 100%;
+}
+

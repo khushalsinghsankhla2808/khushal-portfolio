@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronRight } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo } from '../../data/personalInfo';
+import { useInfiniteLoop } from '../../animations';
 
 const ROLES = [
   "Data Analyst",
@@ -31,6 +32,16 @@ const itemVariants: any = {
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
+  const accentRef = useRef<HTMLDivElement>(null);
+
+  useInfiniteLoop(accentRef, {
+    scale: [0.95, 1.05],
+    rotate: '1turn',
+    opacity: [0.2, 0.45],
+    duration: 8000,
+    easing: 'inOutSine',
+    alternate: true
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,6 +52,12 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-32 md:pt-40 overflow-hidden px-4 md:px-8">
+      {/* Decorative accent animated via anime.js */}
+      <div 
+        ref={accentRef} 
+        className="absolute top-[28%] left-[6%] w-16 h-16 rounded-full border border-primary/30 bg-primary/5 pointer-events-none hidden lg:block z-0 blur-[1px]"
+        aria-hidden="true"
+      />
       
       <div className="max-w-7xl mx-auto w-full z-10 grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
         

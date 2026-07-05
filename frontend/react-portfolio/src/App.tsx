@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
+import CaseStudy from './pages/CaseStudy.tsx';
 import SmoothScroll from './components/layout/SmoothScroll';
 import LoadingScreen from './components/ui/LoadingScreen';
 import BackgroundEffects from './components/ui/BackgroundEffects';
@@ -57,6 +58,7 @@ function App() {
               <div className="grow">
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/projects/:id" element={<CaseStudy />} />
                 </Routes>
               </div>
               <Footer />

@@ -198,9 +198,9 @@ export default function Projects() {
                 {/* Footer Action */}
                 <div className="mt-auto pt-6 border-t border-white/10">
                   <a 
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={['velora-ai', 'samsung-supply-chain', 'weather-dashboard', 'phone-analysis-dashboard'].includes(project.id) ? `/projects/${project.id}` : project.githubUrl}
+                    target={['velora-ai', 'samsung-supply-chain', 'weather-dashboard', 'phone-analysis-dashboard'].includes(project.id) ? undefined : "_blank"}
+                    rel={['velora-ai', 'samsung-supply-chain', 'weather-dashboard', 'phone-analysis-dashboard'].includes(project.id) ? undefined : "noreferrer"}
                     onClick={(e) => e.stopPropagation()}
                     className="px-6 py-2.5 bg-white/5 hover:bg-white/10 text-text-primary border border-borders font-bold text-sm transition-all rounded-full flex items-center justify-center gap-2 group/btn"
                   >
