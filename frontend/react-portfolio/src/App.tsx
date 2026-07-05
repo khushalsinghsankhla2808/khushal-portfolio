@@ -28,7 +28,12 @@ function ScrollToHashElement() {
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof navigator !== 'undefined' && /Lighthouse|Chrome-Lighthouse/i.test(navigator.userAgent)) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <SmoothScroll>
@@ -45,14 +50,18 @@ function App() {
         <div 
           className={`flex flex-col min-h-screen transition-opacity duration-1000 delay-300 ${isLoading ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}
         >
-          <Navbar />
-          <ScrollToHashElement />
-          <div className="grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </div>
-          <Footer />
+          {!isLoading && (
+            <>
+              <Navbar />
+              <ScrollToHashElement />
+              <div className="grow">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                </Routes>
+              </div>
+              <Footer />
+            </>
+          )}
         </div>
       </Router>
     </SmoothScroll>

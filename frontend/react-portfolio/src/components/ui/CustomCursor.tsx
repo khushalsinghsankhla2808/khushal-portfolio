@@ -99,12 +99,13 @@ export default function CustomCursor() {
         style={{
           x: ringX,
           y: ringY,
+          width: 32,
+          height: 32,
           translateX: '-50%',
           translateY: '-50%',
         }}
         animate={{
-          width: isHovering ? 56 : 32,
-          height: isHovering ? 56 : 32,
+          scale: isHovering ? 1.75 : 1,
           opacity: isHovering ? 0.9 : 0.5,
         }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
