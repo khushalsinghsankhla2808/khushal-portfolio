@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Critical Resource Preloads -->
-    <link rel="preload" as="image" href="/Profile.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" as="style" crossorigin />
+    <link rel="preload" href="/fonts/Geist-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" as="image" href="/Profile.webp" imagesrcset="/Profile-mobile.webp 340w, /Profile.webp 681w" imagesizes="(max-width: 768px) 340px, 681px" fetchpriority="high" />
     
     <!-- Primary Meta Tags -->
     <title>Khushal Singh Sankhla | Data Analyst & Web Developer Portfolio</title>
@@ -52,13 +52,7 @@
       }
     </script>
 
-    <!-- Fonts preconnect and lazy stylesheet load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    </noscript>
+
   </head>
   <body>
     <div id="root"></div>

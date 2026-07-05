@@ -117,6 +117,8 @@ export default function Hero() {
               <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent z-10" />
               <img 
                 src="/Profile.webp" 
+                srcSet="/Profile-mobile.webp 340w, /Profile.webp 681w"
+                sizes="(max-width: 768px) 340px, 681px"
                 alt="Khushal Singh Sankhla" 
                 width={681}
                 height={1024}
