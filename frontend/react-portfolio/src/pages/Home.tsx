@@ -3,7 +3,6 @@ import About from '../components/sections/About';
 import Experience from '../components/sections/Experience';
 import WhyHireMe from '../components/sections/WhyHireMe';
 import Skills from '../components/sections/Skills';
-import AnalyticsDashboard from '../components/sections/AnalyticsDashboard';
 import Projects from '../components/sections/Projects';
 import LearningJourney from '../components/sections/LearningJourney';
 import FutureRoadmap from '../components/sections/FutureRoadmap';
@@ -20,7 +19,6 @@ export default function Home() {
       <Experience />
       <WhyHireMe />
       <Skills />
-      <AnalyticsDashboard />
       <Projects />
       <LearningJourney />
       <FutureRoadmap />
