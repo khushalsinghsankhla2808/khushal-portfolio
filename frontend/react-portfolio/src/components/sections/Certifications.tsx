@@ -4,10 +4,19 @@ import { Award, ShieldCheck, Rocket, ExternalLink, X, Database, Activity, CheckC
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import clsx from 'clsx';
 
-export default function Certifications() {
-  // We duplicate the list twice so it can loop seamlessly in a CSS marquee.
-  const marqueeItems = [...certifications, ...certifications, ...certifications];
+// We duplicate the list twice so it can loop seamlessly in a CSS marquee.
+const marqueeItems = [...certifications, ...certifications, ...certifications];
 
+const getIcon = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes('sql') || t.includes('data')) return Database;
+  if (t.includes('power bi') || t.includes('analytics') || t.includes('fabric')) return Activity;
+  if (t.includes('ai') || t.includes('machine learning') || t.includes('copilot') || t.includes('project') || t.includes('hackathon')) return Rocket;
+  if (t.includes('secure') || t.includes('security')) return ShieldCheck;
+  return Award;
+};
+
+export default function Certifications() {
   const [hoveredCert, setHoveredCert] = useState<Certification | null>(null);
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
@@ -19,15 +28,6 @@ export default function Certifications() {
   const handleMouseMove = (e: React.MouseEvent) => {
     hoverX.set(e.clientX + 20);
     hoverY.set(e.clientY + 20);
-  };
-
-  const getIcon = (title: string) => {
-    const t = title.toLowerCase();
-    if (t.includes('sql') || t.includes('data')) return Database;
-    if (t.includes('power bi') || t.includes('analytics') || t.includes('fabric')) return Activity;
-    if (t.includes('ai') || t.includes('machine learning') || t.includes('copilot') || t.includes('project') || t.includes('hackathon')) return Rocket;
-    if (t.includes('secure') || t.includes('security')) return ShieldCheck;
-    return Award;
   };
 
   return (

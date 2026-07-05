@@ -6,6 +6,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
 import { personalInfo } from '../../data/personalInfo';
 
+const navLinks = [
+  { name: 'Home', href: '/#home', id: 'home' },
+  { name: 'About', href: '/#about', id: 'about' },
+  { name: 'Skills', href: '/#skills', id: 'skills' },
+  { name: 'Experience', href: '/#experience', id: 'experience' },
+  { name: 'Projects', href: '/#projects', id: 'projects' },
+  { name: 'Certificates', href: '/#certifications', id: 'certifications' },
+  { name: 'Contact', href: '/#contact', id: 'contact' },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -45,16 +55,6 @@ export default function Navbar() {
     updateScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { name: 'Home', href: '/#home', id: 'home' },
-    { name: 'About', href: '/#about', id: 'about' },
-    { name: 'Skills', href: '/#skills', id: 'skills' },
-    { name: 'Experience', href: '/#experience', id: 'experience' },
-    { name: 'Projects', href: '/#projects', id: 'projects' },
-    { name: 'Certificates', href: '/#certifications', id: 'certifications' },
-    { name: 'Contact', href: '/#contact', id: 'contact' },
-  ];
 
   return (
     <motion.nav 
