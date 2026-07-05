@@ -232,8 +232,210 @@ const BEATS_DATA: Record<string, Beat[]> = {
         </>
       )
     }
+  ],
+  'swiggy-vs-zomato': [
+    {
+      title: "Vision & Dataset",
+      content: (
+        <>
+          <p>
+            <strong>Business Problem:</strong> Comparing market share, pricing strategies, and customer satisfaction between two major food delivery apps.
+          </p>
+          <p>
+            <strong>Objective:</strong> Analyze restaurant data, user ratings, and pricing to deliver a comparative BI dashboard.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Schema Wrangling",
+      content: (
+        <>
+          <p>
+            To perform comparative market studies, restaurant CSV datasets scraped from both platforms are processed:
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Data Ingestion:</strong> Ingests transactional and menu lists from multiple directories.</li>
+            <li><strong>Schema Normalization:</strong> Standardizes differences in rating scales and pricing structures.</li>
+          </ul>
+        </>
+      )
+    },
+    {
+      title: "Challenges & Resolution",
+      content: (
+        <>
+          <p>
+            <strong>Challenges Encountered:</strong> Standardizing schema differences between the two scraped datasets.
+          </p>
+          <p>
+            <strong>Solution:</strong> Built structured query pipelines in Power Query to map divergent columns and align discount parameters.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Key Insights & Outcome",
+      content: (
+        <>
+          <p>
+            <strong>Lessons Learned:</strong> Improved data wrangling skills using Python and Pandas before loading into Power BI.
+          </p>
+          <p>
+            Identified regional dominance for each platform and found correlation between discount offerings and user ratings.
+          </p>
+        </>
+      )
+    }
+  ],
+  'spotify-dashboard': [
+    {
+      title: "Vision & Dataset",
+      content: (
+        <>
+          <p>
+            <strong>Business Problem:</strong> Music labels and independent artists lacked a consolidated view to track streaming performance and listener demographics across regions.
+          </p>
+          <p>
+            <strong>Objective:</strong> Design an interactive Power BI dashboard tracking KPIs like total streams, monthly listeners, and top tracks.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Streaming Data Architecture",
+      content: (
+        <>
+          <p>
+            The dashboard connects to Spotify weekly charts data, cleaning listener records:
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Data Extraction:</strong> Ingests global top 200 track weekly audio CSV files.</li>
+            <li><strong>Data Modeling:</strong> Builds dimension hierarchies for artists, genres, and track tempo.</li>
+          </ul>
+        </>
+      )
+    },
+    {
+      title: "Optimization Challenges",
+      content: (
+        <>
+          <p>
+            <strong>Challenges Encountered:</strong> Handling massive datasets of daily streams and optimizing DAX queries for dashboard responsiveness.
+          </p>
+          <p>
+            <strong>Solution:</strong> Refactored measures and optimized database index relationships to guarantee low-latency visual rendering.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Key Insights & Outcome",
+      content: (
+        <>
+          <p>
+            <strong>Lessons Learned:</strong> Enhanced skills in optimizing visual rendering times for large-scale datasets in Power BI.
+          </p>
+          <p>
+            Identified distinct regional preferences for genre and tempo, and discovered a correlation between track duration and replay value.
+          </p>
+        </>
+      )
+    }
+  ],
+  'walmart-sales-analysis': [
+    {
+      title: "Vision & Dataset",
+      content: (
+        <>
+          <p>
+            <strong>Business Problem:</strong> Walmart needs to optimize inventory turnover and identify seasonal buying patterns to reduce overstock and stockouts.
+          </p>
+          <p>
+            <strong>Objective:</strong> Analyze 500k+ sales records to build an end-to-end data pipeline that highlights key sales trends and seasonal impacts.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "ETL Pipeline & SQL",
+      content: (
+        <>
+          <p>
+            The database solution coordinates retail sales parameters into clean relational tables:
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Ingestion:</strong> Extracts 500k+ CSV sales records.</li>
+            <li><strong>Storage:</strong> Structured inside a PostgreSQL database utilizing indexed queries.</li>
+          </ul>
+        </>
+      )
+    },
+    {
+      title: "Cleaning Challenges",
+      content: (
+        <>
+          <p>
+            <strong>Challenges Encountered:</strong> Handling null values and data inconsistencies in the raw dataset, solved by rigorous SQL data cleaning.
+          </p>
+          <p>
+            <strong>Solution:</strong> Formulated structured transactional views to filter out incomplete fields.
+          </p>
+        </>
+      )
+    },
+    {
+      title: "Key Insights & Outcome",
+      content: (
+        <>
+          <p>
+            <strong>Lessons Learned:</strong> Deepened understanding of advanced SQL window functions for time-series data.
+          </p>
+          <p>
+            Identified peak purchasing seasons leading to a 15% better stock prediction capability, found top-performing branches and product lines, and uncovered customer demographic purchasing patterns.
+          </p>
+        </>
+      )
+    }
   ]
 };
+
+interface CaseStudyImageProps {
+  src: string;
+  alt: string;
+}
+
+function CaseStudyImage({ src, alt }: CaseStudyImageProps) {
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (hasError || !src) {
+    return (
+      <div className="w-full h-full min-h-[220px] bg-white/5 border border-borders rounded-2xl flex flex-col items-center justify-center p-6 text-center text-text-secondary">
+        <Database size={32} className="text-primary/45 mb-2" />
+        <span className="text-xs font-mono">Image Unavailable</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-full min-h-[220px] flex items-center justify-center bg-black/20 rounded-2xl overflow-hidden aspect-16/10 border border-borders shadow-md">
+      {isLoading && (
+        <div className="absolute inset-0 bg-white/5 animate-pulse flex items-center justify-center">
+          <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setIsLoading(false)}
+        onError={() => setHasError(true)}
+        className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+      />
+    </div>
+  );
+}
 
 export default function CaseStudy() {
   const { id } = useParams<{ id: string }>();
@@ -241,7 +443,10 @@ export default function CaseStudy() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeBeat, setActiveBeat] = useState(0);
 
-  const isFlagship = project && ['velora-ai', 'samsung-supply-chain', 'weather-dashboard', 'phone-analysis-dashboard'].includes(project.id);
+  const isFlagship = project && [
+    'velora-ai', 'samsung-supply-chain', 'weather-dashboard', 'phone-analysis-dashboard',
+    'swiggy-vs-zomato', 'spotify-dashboard', 'walmart-sales-analysis'
+  ].includes(project.id);
   const beats = project ? BEATS_DATA[project.id] : undefined;
 
   // Scroll Observer for scrollytelling
@@ -473,28 +678,52 @@ interface VisualCardProps {
 function VisualCard({ index, project }: VisualCardProps) {
   const id = project.id;
 
+  // Render project screenshot for Vision (0) and Outcome (3) beats
+  if (index === 0) {
+    return (
+      <div className="flex flex-col justify-center h-full w-full space-y-4">
+        <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Project Screenshot</h4>
+        <CaseStudyImage src={project.coverImage || ''} alt={`${project.title} Interface`} />
+      </div>
+    );
+  }
+
+  if (index === 3) {
+    return (
+      <div className="flex flex-col justify-center h-full w-full space-y-4">
+        <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Live Ingestion & Actions</h4>
+        <div className="h-[200px] w-full">
+          <CaseStudyImage src={project.coverImage || ''} alt={`${project.title} Final Result`} />
+        </div>
+        <div className="flex flex-col gap-2 max-w-xs mx-auto w-full">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="px-6 py-2.5 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-xs flex items-center justify-center gap-2"
+          >
+            <FaGithub size={14} />
+            Inspect Codebase
+          </a>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 bg-linear-to-r from-primary to-secondary text-white rounded-full hover:shadow-[0_0_20px_var(--color-glow)] transition-all font-bold text-xs flex items-center justify-center gap-2"
+            >
+              Launch Live Project
+              <ExternalLink size={14} />
+            </a>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // Render technical schematics for middle beats
   if (id === 'velora-ai') {
     switch (index) {
-      case 0:
-        return (
-          <div className="flex flex-col justify-center h-full w-full space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary">System Metrics</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-3xl font-bold text-text-primary font-mono mb-1">&lt; 30s</div>
-                <div className="text-[10px] uppercase text-text-secondary">Gen Time</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-3xl font-bold text-text-primary font-mono mb-1">100%</div>
-                <div className="text-[10px] uppercase text-text-secondary">Customizable</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl col-span-2">
-                <div className="text-xl font-bold text-text-primary font-mono mb-1">OpenRouter AI</div>
-                <div className="text-[10px] uppercase text-text-secondary">LLM Context Engine</div>
-              </div>
-            </div>
-          </div>
-        );
       case 1:
         return (
           <div className="flex flex-col justify-center h-full w-full space-y-6">
@@ -539,60 +768,11 @@ function VisualCard({ index, project }: VisualCardProps) {
             </div>
           </div>
         );
-      case 3:
-        return (
-          <div className="flex flex-col justify-center h-full w-full text-center space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary">Live Platform Showcase</h4>
-            <p className="text-xs text-text-secondary max-w-xs mx-auto leading-relaxed">
-              Velora AI is fully hosted and operational. Browse the source repository or execute live mock generations.
-            </p>
-            <div className="flex flex-col gap-3 max-w-xs mx-auto w-full">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-linear-to-r from-primary to-secondary text-white rounded-full hover:shadow-[0_0_20px_var(--color-glow)] transition-all font-bold text-xs flex items-center justify-center gap-2"
-              >
-                Launch Live App
-                <ExternalLink size={14} />
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-xs flex items-center justify-center gap-2"
-              >
-                <FaGithub size={14} />
-                Inspect Codebase
-              </a>
-            </div>
-          </div>
-        );
     }
   }
 
   if (id === 'samsung-supply-chain') {
     switch (index) {
-      case 0:
-        return (
-          <div className="flex flex-col justify-center h-full w-full space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Supply Chain Targets</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl col-span-2">
-                <div className="text-2xl font-bold text-text-primary font-mono mb-1">40% Faster</div>
-                <div className="text-[10px] uppercase text-text-secondary">Report Generation Speed</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-sm font-bold text-text-primary mb-1">Metrics Ingested</div>
-                <div className="text-[10px] uppercase text-text-secondary">KPIs & Forecasting</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-sm font-bold text-text-primary mb-1">Scope</div>
-                <div className="text-[10px] uppercase text-text-secondary">Regional Operations</div>
-              </div>
-            </div>
-          </div>
-        );
       case 1:
         return (
           <div className="flex flex-col justify-center h-full w-full space-y-6">
@@ -638,51 +818,11 @@ function VisualCard({ index, project }: VisualCardProps) {
             </div>
           </div>
         );
-      case 3:
-        return (
-          <div className="flex flex-col justify-center h-full w-full text-center space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Business Delivery</h4>
-            <p className="text-xs text-text-secondary max-w-xs mx-auto leading-relaxed">
-              Logistics modeling resolved key regional supply bottlenecks and optimized time intelligence analytics YoY.
-            </p>
-            <div className="flex flex-col gap-3 max-w-xs mx-auto w-full">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-xs flex items-center justify-center gap-2"
-              >
-                <FaGithub size={14} />
-                Inspect Repository
-              </a>
-            </div>
-          </div>
-        );
     }
   }
 
   if (id === 'weather-dashboard') {
     switch (index) {
-      case 0:
-        return (
-          <div className="flex flex-col justify-center h-full w-full space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Telemetry (Example Reading)</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-2xl font-bold text-text-primary font-mono mb-1">42 AQI</div>
-                <div className="text-[10px] uppercase text-text-secondary">Air Quality Index (Sample)</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-2xl font-bold text-text-primary font-mono mb-1">6.8</div>
-                <div className="text-[10px] uppercase text-text-secondary">UV Radiation Index (Sample)</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl col-span-2">
-                <div className="text-lg font-bold text-text-primary font-mono mb-1">65% Humidity Ratio (Sample)</div>
-                <div className="text-[10px] uppercase text-text-secondary">Relative Moisture Ratio</div>
-              </div>
-            </div>
-          </div>
-        );
       case 1:
         return (
           <div className="flex flex-col justify-center h-full w-full space-y-6">
@@ -725,51 +865,11 @@ function VisualCard({ index, project }: VisualCardProps) {
             </div>
           </div>
         );
-      case 3:
-        return (
-          <div className="flex flex-col justify-center h-full w-full text-center space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Live Ingestion App</h4>
-            <p className="text-xs text-text-secondary max-w-xs mx-auto leading-relaxed">
-              Consolidated climate metrics are fully operational, fetching parameters incrementally every 15 minutes.
-            </p>
-            <div className="flex flex-col gap-3 max-w-xs mx-auto w-full">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-xs flex items-center justify-center gap-2"
-              >
-                <FaGithub size={14} />
-                Inspect Repository
-              </a>
-            </div>
-          </div>
-        );
     }
   }
 
   if (id === 'phone-analysis-dashboard') {
     switch (index) {
-      case 0:
-        return (
-          <div className="flex flex-col justify-center h-full w-full space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Market Scope</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-2xl font-bold text-text-primary font-mono mb-1">958</div>
-                <div className="text-[10px] uppercase text-text-secondary">Phones cataloged</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl">
-                <div className="text-2xl font-bold text-text-primary font-mono mb-1">26</div>
-                <div className="text-[10px] uppercase text-text-secondary">Active Brands</div>
-              </div>
-              <div className="p-4 bg-white/5 border border-borders rounded-2xl col-span-2">
-                <div className="text-lg font-bold text-text-primary mb-1">Specification Analysis</div>
-                <div className="text-[10px] uppercase text-text-secondary">Focus Parameters</div>
-              </div>
-            </div>
-          </div>
-        );
       case 1:
         return (
           <div className="flex flex-col justify-center h-full w-full space-y-6">
@@ -814,23 +914,133 @@ function VisualCard({ index, project }: VisualCardProps) {
             </div>
           </div>
         );
-      case 3:
+    }
+  }
+
+  if (id === 'swiggy-vs-zomato') {
+    switch (index) {
+      case 1:
         return (
-          <div className="flex flex-col justify-center h-full w-full text-center space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary font-mono">Retail Intelligence</h4>
-            <p className="text-xs text-text-secondary max-w-xs mx-auto leading-relaxed">
-              Interactive comparisons isolate smartphone models representing value outliers instantly.
-            </p>
-            <div className="flex flex-col gap-3 max-w-xs mx-auto w-full">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-xs flex items-center justify-center gap-2"
-              >
-                <FaGithub size={14} />
-                Inspect Repository
-              </a>
+          <div className="flex flex-col justify-center h-full w-full space-y-6">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-secondary font-mono">Competitor ETL Flow</h4>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs font-mono">1</div>
+                <span className="text-xs text-text-secondary font-mono">Raw Restaurant Scraped CSV Ingestion</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs font-mono">2</div>
+                <span className="text-xs text-text-secondary font-mono">Pandas Normalization & Standardizer</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs font-mono">3</div>
+                <span className="text-xs text-text-secondary font-mono">Power BI Multi-Table Relational Schema</span>
+              </div>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="flex flex-col justify-center h-full w-full space-y-4">
+            <div className="flex items-center justify-between border-b border-borders pb-2">
+              <span className="text-xs font-mono text-text-secondary font-bold">Wrangling Terminal (Sample Log)</span>
+              <div className="flex gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-secondary/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-primary/40" />
+              </div>
+            </div>
+            <div className="bg-black/40 p-4 rounded-xl font-mono text-xs text-text-secondary leading-relaxed space-y-2 border border-borders overflow-x-auto">
+              <div className="text-success">[ok] parsed swiggy-dataset.csv.</div>
+              <div className="text-success">[ok] parsed zomato-dataset.csv.</div>
+              <div className="text-warning">[warn] standardizing rating formats (1 to 5 scale).</div>
+              <div className="text-primary">[info] datasets schema normalized successfully.</div>
+            </div>
+          </div>
+        );
+    }
+  }
+
+  if (id === 'spotify-dashboard') {
+    switch (index) {
+      case 1:
+        return (
+          <div className="flex flex-col justify-center h-full w-full space-y-6">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-secondary font-mono">Streaming Data Pipeline</h4>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs font-mono">1</div>
+                <span className="text-xs text-text-secondary font-mono">Global Top 200 Weekly Audio CSV Ingest</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs font-mono">2</div>
+                <span className="text-xs text-text-secondary font-mono">Power Query Custom Ingestion Cleanup</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs font-mono">3</div>
+                <span className="text-xs text-text-secondary font-mono">Dimension Hierarchies Mapping (Tempo/Genre)</span>
+              </div>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="flex flex-col justify-center h-full w-full space-y-4">
+            <div className="flex items-center justify-between border-b border-borders pb-2">
+              <span className="text-xs font-mono text-text-secondary font-bold">DAX Measure Editor (Tracks Count)</span>
+              <div className="flex gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-secondary/40" />
+              </div>
+            </div>
+            <div className="bg-black/40 p-4 rounded-xl font-mono text-xs text-text-secondary leading-relaxed space-y-2 border border-borders overflow-x-auto">
+              <div className="text-primary">Total Tracks Count = </div>
+              <div className="text-success pl-4">DISTINCTCOUNT(</div>
+              <div className="text-text-primary pl-8">'Weekly Charts'[Track Name]</div>
+              <div className="text-success pl-4">)</div>
+              <div className="text-primary pl-4"># Optimization: Reduced visual rendering time</div>
+            </div>
+          </div>
+        );
+    }
+  }
+
+  if (id === 'walmart-sales-analysis') {
+    switch (index) {
+      case 1:
+        return (
+          <div className="flex flex-col justify-center h-full w-full space-y-6">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-secondary font-mono">Retail Ingestion Map</h4>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs font-mono">1</div>
+                <span className="text-xs text-text-secondary font-mono">500k+ Sales Records CSV Extraction</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs font-mono">2</div>
+                <span className="text-xs text-text-secondary font-mono">PostgreSQL relational table mappings</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs font-mono">3</div>
+                <span className="text-xs text-text-secondary font-mono">SQL data cleaning pipelines & CTE queries</span>
+              </div>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="flex flex-col justify-center h-full w-full space-y-4">
+            <div className="flex items-center justify-between border-b border-borders pb-2">
+              <span className="text-xs font-mono text-text-secondary font-bold">PostgreSQL Console (Analytical Query)</span>
+              <div className="flex gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-success/40" />
+                <span className="w-2.5 h-2.5 rounded-full bg-primary/40" />
+              </div>
+            </div>
+            <div className="bg-black/40 p-4 rounded-xl font-mono text-[10px] md:text-xs text-text-secondary leading-relaxed space-y-2 border border-borders overflow-x-auto">
+              <div className="text-primary">SELECT branch, payment_method,</div>
+              <div className="text-success pl-4">SUM(weekly_sales) OVER (PARTITION BY branch)</div>
+              <div className="text-primary pl-4">FROM walmart_sales_data</div>
+              <div className="text-primary pl-4">WHERE branch IS NOT NULL;</div>
             </div>
           </div>
         );
