@@ -36,6 +36,7 @@ export default function ThemeToggle() {
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
           <Sun 
+            aria-hidden="true"
             className={clsx(
               "absolute transition-all duration-500 ease-cubic-bezier(0.4,0,0.2,1) text-yellow-500 group-hover:text-yellow-400",
               theme === 'dark' ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"
@@ -43,6 +44,7 @@ export default function ThemeToggle() {
             size={24}
           />
           <Moon 
+            aria-hidden="true"
             className={clsx(
               "absolute transition-all duration-500 ease-cubic-bezier(0.4,0,0.2,1) text-primary group-hover:text-secondary",
               theme === 'light' ? "opacity-0 -rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"

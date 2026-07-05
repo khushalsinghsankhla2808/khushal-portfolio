@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
+const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
 /**
  * Custom cursor: a small solid dot tracks the mouse exactly, while a
  * larger ring trails behind with spring physics. Hovering any element
@@ -10,6 +12,8 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
  * Automatically disables itself on touch/coarse-pointer devices.
  */
 export default function CustomCursor() {
+  if (isTouchDevice) return null;
+
   const [enabled, setEnabled] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);

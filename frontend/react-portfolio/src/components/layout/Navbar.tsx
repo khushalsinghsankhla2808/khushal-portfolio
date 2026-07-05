@@ -58,6 +58,7 @@ export default function Navbar() {
 
   return (
     <motion.nav 
+      role="navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
@@ -100,6 +101,7 @@ export default function Navbar() {
               <a 
                 href={link.href} 
                 data-cursor="hover"
+                aria-current={activeSection === link.id ? "page" : undefined}
                 className={clsx(
                   "text-sm font-medium transition-colors relative px-4 py-2 group",
                   activeSection === link.id 
@@ -125,10 +127,10 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-4 shrink-0">
           <div className="flex items-center gap-3 pr-4 border-r border-border">
             <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-text-muted hover:text-text-primary hover:scale-110 transition-all">
-              <FaGithub size={18} />
+              <FaGithub size={18} aria-hidden="true" />
             </a>
             <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-text-muted hover:text-primary hover:scale-110 transition-all">
-              <FaLinkedin size={18} />
+              <FaLinkedin size={18} aria-hidden="true" />
             </a>
           </div>
           <a 
@@ -138,14 +140,20 @@ export default function Navbar() {
             data-cursor="hover"
             className="px-5 py-2 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_15px_var(--color-glow)] hover:shadow-[0_0_25px_var(--color-glow)] transition-all duration-300 shrink-0 hover:scale-[1.03]"
           >
-            <Download size={14} /> Resume
+            <Download size={14} aria-hidden="true" /> Resume
           </a>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="xl:hidden flex items-center shrink-0">
-          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" aria-label="Toggle mobile menu" aria-expanded={isOpen} className="text-text-primary p-2 bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors">
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            data-cursor="hover" 
+            aria-label="Toggle mobile menu" 
+            aria-expanded={isOpen} 
+            className="text-text-primary min-h-[44px] min-w-[44px] flex items-center justify-center bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors"
+          >
+            {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -166,8 +174,9 @@ export default function Navbar() {
                 href={link.href} 
                 onClick={() => setIsOpen(false)} 
                 data-cursor="hover"
+                aria-current={activeSection === link.id ? "page" : undefined}
                 className={clsx(
-                  "text-lg font-bold tracking-wide py-2 border-b border-borders",
+                  "text-lg font-bold tracking-wide py-2 border-b border-borders min-h-[44px] flex items-center",
                   activeSection === link.id ? "text-secondary" : "text-text-secondary hover:text-text-primary"
                 )}
               >
@@ -176,11 +185,11 @@ export default function Navbar() {
             ))}
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-6">
-                <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-text-secondary hover:text-text-primary">
-                  <FaGithub size={24} />
+                <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-text-secondary hover:text-text-primary min-h-[44px] min-w-[44px] flex items-center justify-center">
+                  <FaGithub size={24} aria-hidden="true" />
                 </a>
-                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-text-secondary hover:text-primary">
-                  <FaLinkedin size={24} />
+                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-text-secondary hover:text-primary min-h-[44px] min-w-[44px] flex items-center justify-center">
+                  <FaLinkedin size={24} aria-hidden="true" />
                 </a>
               </div>
               <a 
@@ -188,9 +197,9 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
-                className="px-6 py-3 rounded-full font-bold flex items-center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_15px_var(--color-glow)]"
+                className="px-6 py-3 rounded-full font-bold flex-items center gap-2 text-sm text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_15px_var(--color-glow)] min-h-[44px] flex items-center justify-center"
               >
-                <Download size={16} /> Resume
+                <Download size={16} aria-hidden="true" /> Resume
               </a>
             </div>
           </motion.div>

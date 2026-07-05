@@ -28,6 +28,18 @@ function ScrollToHashElement() {
   return null;
 }
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects/:id" element={<CaseStudy />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(() => {
     if (typeof navigator !== 'undefined' && /Lighthouse|Chrome-Lighthouse/i.test(navigator.userAgent)) {
@@ -56,10 +68,7 @@ function App() {
               <Navbar />
               <ScrollToHashElement />
               <div className="grow">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/projects/:id" element={<CaseStudy />} />
-                </Routes>
+                <AnimatedRoutes />
               </div>
               <Footer />
             </>

@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import Hero from '../components/sections/Hero';
 
 const About = lazy(() => import('../components/sections/About'));
@@ -13,7 +14,12 @@ const Contact = lazy(() => import('../components/sections/Contact'));
 
 export default function Home() {
   return (
-    <main>
+    <motion.main
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -24 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+    >
       <Hero />
       <Suspense fallback={<div className="py-10 text-center text-text-secondary/50 font-mono text-xs">Loading...</div>}>
         <About />
@@ -26,6 +32,6 @@ export default function Home() {
         <FAQ />
         <Contact />
       </Suspense>
-    </main>
+    </motion.main>
   );
 }

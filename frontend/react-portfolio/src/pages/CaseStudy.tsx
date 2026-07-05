@@ -2,9 +2,32 @@ import { useRef, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Clock, Database, Trophy, Activity, CheckCircle, Code } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import { useScrollScrub } from '../animations';
 import { REDUCED_MOTION } from '../animations/config';
+
+function ScrollProgressBar() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? scrollTop / docHeight : 0);
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    return () => window.removeEventListener('scroll', updateProgress);
+  }, []);
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 h-[3px] z-9999  bg-linear-to-r from-primary to-secondary origin-left pointer-events-none"
+      style={{ scaleX: progress, transformOrigin: '0%' }}
+    />
+  );
+}
 
 interface Beat {
   title: string;
@@ -412,7 +435,7 @@ function CaseStudyImage({ src, alt }: CaseStudyImageProps) {
   if (hasError || !src) {
     return (
       <div className="w-full h-full min-h-[220px] bg-white/5 border border-borders rounded-2xl flex flex-col items-center justify-center p-6 text-center text-text-secondary">
-        <Database size={32} className="text-primary/45 mb-2" />
+        <Database size={32} className="text-primary/45 mb-2" aria-hidden="true" />
         <span className="text-xs font-mono">Image Unavailable</span>
       </div>
     );
@@ -429,6 +452,8 @@ function CaseStudyImage({ src, alt }: CaseStudyImageProps) {
         src={src}
         alt={alt}
         loading="lazy"
+        width={1280}
+        height={800}
         onLoad={() => setIsLoading(false)}
         onError={() => setHasError(true)}
         className={`w-full h-full object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
@@ -467,205 +492,219 @@ export default function CaseStudy() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -24 }}
+        transition={{ duration: 0.35, ease: 'easeInOut' }}
+        className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center"
+      >
         <h2 className="text-3xl font-bold text-text-primary mb-4">Project Not Found</h2>
         <p className="text-text-secondary mb-8">The project case-study you are looking for does not exist.</p>
         <Link
           to="/"
           className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold"
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={18} aria-hidden="true" />
           Back to Home
         </Link>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background text-text-primary pt-32 pb-24 px-4 md:px-8 relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-radial-glow opacity-30 pointer-events-none" />
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -24 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+    >
+      <ScrollProgressBar />
+      <div className="min-h-screen bg-background text-text-primary pt-32 pb-24 px-4 md:px-8 relative overflow-hidden">
+        {/* Ambient background glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-radial-glow opacity-30 pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Back Link */}
-        <Link
-          to="/#projects"
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-12 group font-medium"
-        >
-          <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-          Back to Projects
-        </Link>
+        <div className="max-w-6xl mx-auto relative z-10">
+          {/* Back Link */}
+          <Link
+            to="/#projects"
+            className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-12 group font-medium"
+          >
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
+            Back to Projects
+          </Link>
 
-        {/* Header section */}
-        <header className="mb-16">
-          <span className="text-xs font-bold text-primary uppercase tracking-widest mb-3 block">
-            {project.cardLabel || `Case Study · ${project.category}`}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight heading-glow">
-            {project.title}
-          </h1>
-
-          <div className="flex flex-wrap gap-3 items-center mb-8">
-            <span className="px-3.5 py-1.5 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-borders">
-              {project.category}
+          {/* Header section */}
+          <header className="mb-16">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest mb-3 block">
+              {project.cardLabel || `Case Study · ${project.category}`}
             </span>
-            {project.duration && (
-              <span className="flex items-center gap-1.5 px-3.5 py-1.5 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-borders">
-                <Clock size={12} className="text-primary" />
-                {project.duration}
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight heading-glow">
+              {project.title}
+            </h1>
+
+            <div className="flex flex-wrap gap-3 items-center mb-8">
+              <span className="px-3.5 py-1.5 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-borders">
+                {project.category}
               </span>
-            )}
-            <span className="px-3.5 py-1.5 bg-primary/10 border border-primary/20 text-primary text-xs font-bold rounded-full">
-              {project.difficulty}
-            </span>
-          </div>
-
-          <p className="text-lg md:text-xl text-text-secondary leading-relaxed font-light max-w-4xl">
-            {project.description}
-          </p>
-        </header>
-
-        {/* Dynamic content beats section (Scrollytelling for Flagships, normal detailed list for others) */}
-        {isFlagship && beats && !REDUCED_MOTION ? (
-          <div ref={containerRef} className="mt-24 border-t border-borders pt-16">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              
-              {/* Left Column: Narrative text beats */}
-              <div className="lg:col-span-7 space-y-36 pb-24">
-                {beats.map((beat, idx) => (
-                  <div key={idx} className="min-h-[40vh] flex flex-col justify-center border-l-2 border-borders hover:border-primary/50 transition-colors pl-6 md:pl-8">
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block font-mono">Stage 0{idx + 1}</span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-text-primary mb-4">{beat.title}</h3>
-                    <div className="text-text-secondary font-light leading-relaxed space-y-4">
-                      {beat.content}
-                    </div>
-                    {/* Inline visual fallback for mobile */}
-                    <div className="mt-8 lg:hidden">
-                      <VisualCard index={idx} project={project} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Right Column: Sticky Visual container for Desktop only */}
-              <div className="hidden lg:block lg:col-span-5 lg:sticky lg:top-40 h-[480px]">
-                <div className="relative w-full h-full glass-card rounded-[32px] overflow-hidden border border-borders shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex items-center justify-center p-6">
-                  <VisualCard index={activeBeat} project={project} />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        ) : (
-          /* Normal static rendering (fallback for reduced motion, mobile, or other projects) */
-          <div className="mt-16 border-t border-borders pt-16 space-y-12">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="glass-card p-8 border border-borders">
-                <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                  <Database className="text-primary" size={20} />
-                  Business Problem & Objective
-                </h3>
-                <p className="text-text-secondary text-sm md:text-base leading-relaxed mb-4">
-                  <strong>Problem:</strong> {project.businessProblem || "Required unified tracking and dashboard metrics."}
-                </p>
-                <p className="text-text-secondary text-sm md:text-base leading-relaxed">
-                  <strong>Objective:</strong> {project.objective || "Build a high-fidelity business intelligence dashboard solution."}
-                </p>
-              </div>
-
-              <div className="glass-card p-8 border border-borders">
-                <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                  <Activity className="text-primary" size={20} />
-                  Dataset & Scope
-                </h3>
-                <p className="text-text-secondary text-sm md:text-base leading-relaxed">
-                  {project.dataset || "Proprietary database schemas and structured reporting data."}
-                </p>
-              </div>
+              {project.duration && (
+                <span className="flex items-center gap-1.5 px-3.5 py-1.5 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-borders">
+                  <Clock size={12} className="text-primary" aria-hidden="true" />
+                  {project.duration}
+                </span>
+              )}
+              <span className="px-3.5 py-1.5 bg-primary/10 border border-primary/20 text-primary text-xs font-bold rounded-full">
+                {project.difficulty}
+              </span>
             </div>
 
-            {project.insights && project.insights.length > 0 && (
-              <div className="glass-card p-8 border border-borders">
-                <h3 className="text-xl font-bold text-text-primary mb-6 flex items-center gap-2">
-                  <Trophy className="text-primary" size={20} />
-                  Key Insights & Discoveries
-                </h3>
-                <ul className="grid md:grid-cols-2 gap-4">
-                  {project.insights.map((insight, index) => (
-                    <li key={index} className="flex items-start gap-3 text-text-secondary text-sm leading-relaxed">
-                      <CheckCircle size={16} className="text-primary shrink-0 mt-0.5" />
-                      <span>{insight}</span>
-                    </li>
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed font-light max-w-4xl">
+              {project.description}
+            </p>
+          </header>
+
+          {/* Dynamic content beats section (Scrollytelling for Flagships, normal detailed list for others) */}
+          {isFlagship && beats && !REDUCED_MOTION ? (
+            <div ref={containerRef} className="mt-24 border-t border-borders pt-16">
+              <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                {/* Left Column: Narrative text beats */}
+                <div className="lg:col-span-7 space-y-36 pb-24">
+                  {beats.map((beat, idx) => (
+                    <div key={idx} className="min-h-[40vh] flex flex-col justify-center border-l-2 border-borders hover:border-primary/50 transition-colors pl-6 md:pl-8">
+                      <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block font-mono">Stage 0{idx + 1}</span>
+                      <h3 className="text-2xl md:text-3xl font-bold text-text-primary mb-4">{beat.title}</h3>
+                      <div className="text-text-secondary font-light leading-relaxed space-y-4">
+                        {beat.content}
+                      </div>
+                      {/* Inline visual fallback for mobile */}
+                      <div className="mt-8 lg:hidden">
+                        <VisualCard index={idx} project={project} />
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
+                {/* Right Column: Sticky Visual container for Desktop only */}
+                <div className="hidden lg:block lg:col-span-5 lg:sticky lg:top-40 h-[480px]">
+                  <div className="relative w-full h-full glass-card rounded-[32px] overflow-hidden border border-borders shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex items-center justify-center p-6">
+                    <VisualCard index={activeBeat} project={project} />
+                  </div>
+                </div>
+
               </div>
-            )}
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {project.challenges && project.challenges.length > 0 && (
-                <div className="glass-card p-8 border border-borders">
-                  <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                    <Code className="text-primary" size={20} />
-                    Technical Challenges
-                  </h3>
-                  <ul className="space-y-3">
-                    {project.challenges.map((challenge, index) => (
-                      <li key={index} className="text-text-secondary text-sm leading-relaxed list-disc pl-4">
-                        {challenge}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {project.lessonsLearned && project.lessonsLearned.length > 0 && (
-                <div className="glass-card p-8 border border-borders">
-                  <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                    <Trophy className="text-primary" size={20} />
-                    Lessons Learned
-                  </h3>
-                  <ul className="space-y-3">
-                    {project.lessonsLearned.map((lesson, index) => (
-                      <li key={index} className="text-text-secondary text-sm leading-relaxed list-disc pl-4">
-                        {lesson}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
+          ) : (
+            /* Normal static rendering (fallback for reduced motion, mobile, or other projects) */
+            <div className="mt-16 border-t border-borders pt-16 space-y-12">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="glass-card p-8 border border-borders">
+                  <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                    <Database className="text-primary" size={20} aria-hidden="true" />
+                    Business Problem & Objective
+                  </h3>
+                  <p className="text-text-secondary text-sm md:text-base leading-relaxed mb-4">
+                    <strong>Problem:</strong> {project.businessProblem || "Required unified tracking and dashboard metrics."}
+                  </p>
+                  <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+                    <strong>Objective:</strong> {project.objective || "Build a high-fidelity business intelligence dashboard solution."}
+                  </p>
+                </div>
 
-            {/* Launch CTA */}
-            <div className="glass-card p-8 border border-borders text-center max-w-2xl mx-auto">
-              <h3 className="text-xl font-bold text-text-primary mb-2">Explore the Project</h3>
-              <p className="text-text-secondary text-sm mb-6">Inspect code source repositories or launch the live dashboard view.</p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-sm flex items-center gap-2"
-                >
-                  <FaGithub size={16} />
-                  View Repository
-                </a>
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-linear-to-r from-primary to-secondary text-white rounded-full hover:shadow-[0_0_20px_var(--color-glow)] transition-all font-bold text-sm flex items-center gap-2"
-                  >
-                    Launch Live Project
-                    <ExternalLink size={16} />
-                  </a>
+                <div className="glass-card p-8 border border-borders">
+                  <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                    <Activity className="text-primary" size={20} aria-hidden="true" />
+                    Dataset & Scope
+                  </h3>
+                  <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+                    {project.dataset || "Proprietary database schemas and structured reporting data."}
+                  </p>
+                </div>
+              </div>
+
+              {project.insights && project.insights.length > 0 && (
+                <div className="glass-card p-8 border border-borders">
+                  <h3 className="text-xl font-bold text-text-primary mb-6 flex items-center gap-2">
+                    <Trophy className="text-primary" size={20} aria-hidden="true" />
+                    Key Insights & Discoveries
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    {project.insights.map((insight, index) => (
+                      <li key={index} className="flex items-start gap-3 text-text-secondary text-sm leading-relaxed">
+                        <CheckCircle size={16} className="text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                        <span>{insight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {project.challenges && project.challenges.length > 0 && (
+                  <div className="glass-card p-8 border border-borders">
+                    <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                      <Code className="text-primary" size={20} aria-hidden="true" />
+                      Technical Challenges
+                    </h3>
+                    <ul className="space-y-3">
+                      {project.challenges.map((challenge, index) => (
+                        <li key={index} className="text-text-secondary text-sm leading-relaxed list-disc pl-4">
+                          {challenge}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {project.lessonsLearned && project.lessonsLearned.length > 0 && (
+                  <div className="glass-card p-8 border border-borders">
+                    <h3 className="text-xl font-bold text-text-primary mb-4 flex items-center gap-2">
+                      <Trophy className="text-primary" size={20} aria-hidden="true" />
+                      Lessons Learned
+                    </h3>
+                    <ul className="space-y-3">
+                      {project.lessonsLearned.map((lesson, index) => (
+                        <li key={index} className="text-text-secondary text-sm leading-relaxed list-disc pl-4">
+                          {lesson}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
+
+              {/* Launch CTA */}
+              <div className="glass-card p-8 border border-borders text-center max-w-2xl mx-auto">
+                <h3 className="text-xl font-bold text-text-primary mb-2">Explore the Project</h3>
+                <p className="text-text-secondary text-sm mb-6">Inspect code source repositories or launch the live dashboard view.</p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-6 py-3 bg-white/5 border border-borders rounded-full text-text-primary hover:bg-white/10 transition-colors font-bold text-sm flex items-center gap-2"
+                  >
+                    <FaGithub size={16} aria-hidden="true" />
+                    View Repository
+                  </a>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-linear-to-r from-primary to-secondary text-white rounded-full hover:shadow-[0_0_20px_var(--color-glow)] transition-all font-bold text-sm flex items-center gap-2"
+                    >
+                      Launch Live Project
+                      <ExternalLink size={16} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -712,7 +751,7 @@ function VisualCard({ index, project }: VisualCardProps) {
               className="px-6 py-2.5 bg-linear-to-r from-primary to-secondary text-white rounded-full hover:shadow-[0_0_20px_var(--color-glow)] transition-all font-bold text-xs flex items-center justify-center gap-2"
             >
               Launch Live Project
-              <ExternalLink size={14} />
+              <ExternalLink size={14} aria-hidden="true" />
             </a>
           )}
         </div>

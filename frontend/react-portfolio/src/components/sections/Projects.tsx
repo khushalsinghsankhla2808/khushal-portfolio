@@ -141,13 +141,13 @@ export default function Projects() {
                     <span className="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">
                       {project.cardLabel || `Solo Project · ${project.category}`}
                     </span>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap gap-3 items-center text-xs text-text-secondary font-medium">
                       <span className="px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-borders">
                          {project.category}
                       </span>
                       {project.duration && (
-                        <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-xs font-medium text-text-secondary border border-borders">
-                          <Clock size={12} className="text-primary" />
+                        <span className="flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-borders rounded-full">
+                          <Clock size={12} className="text-primary" aria-hidden="true" />
                           {project.duration}
                         </span>
                       )}
@@ -158,7 +158,7 @@ export default function Projects() {
                     {/* Featured Badge */}
                     {project.featured && (
                       <div className="px-3 py-1.5 mr-2 bg-primary/10 border border-primary/30 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-md">
-                        <Star size={12} className="fill-primary" /> Featured
+                        <Star size={12} className="fill-primary" aria-hidden="true" /> Featured
                       </div>
                     )}
                     
@@ -172,7 +172,7 @@ export default function Projects() {
                         title="Live Demo"
                         aria-label={`Live Demo of ${project.title}`}
                       >
-                        <ExternalLink size={18} />
+                        <ExternalLink size={18} aria-hidden="true" />
                       </a>
                     )}
                     <a 
@@ -184,7 +184,7 @@ export default function Projects() {
                       title="GitHub Repository"
                       aria-label={`GitHub Repository of ${project.title}`}
                     >
-                      <FaGithub size={18} />
+                      <FaGithub size={18} aria-hidden="true" />
                     </a>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export default function Projects() {
                     className="px-6 py-2.5 bg-white/5 hover:bg-white/10 text-text-primary border border-borders font-bold text-sm transition-all rounded-full flex items-center justify-center gap-2 group/btn"
                   >
                     View Project Details
-                    <ExternalLink size={16} className="text-primary group-hover/btn:translate-x-1 transition-transform" />
+                    <ExternalLink size={16} className="text-primary group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
                   </a>
                 </div>
               </div>
@@ -275,7 +275,7 @@ export default function Projects() {
                 aria-label="Close project preview"
                 className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-text-primary hover:bg-white/20 transition-colors"
               >
-                <X size={24} />
+                <X size={24} aria-hidden="true" />
               </button>
               <img src={selectedProject} alt="Project Preview" width={400} height={225} className="w-full h-auto rounded-xl shadow-lg" loading="lazy" />
             </motion.div>
