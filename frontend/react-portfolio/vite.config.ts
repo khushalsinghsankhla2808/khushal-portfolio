@@ -25,7 +25,6 @@ export default defineConfig({
             const isReactCore = id.includes('/react/') || id.includes('\\react\\') || 
                                id.includes('/react-dom/') || id.includes('\\react-dom\\');
             if (isReactCore) return 'vendor-react';
-            return 'vendor';
           }
         }
       }
