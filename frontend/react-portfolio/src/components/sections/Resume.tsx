@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Download, FileText } from 'lucide-react';
+import { personalInfo } from '../../data/personalInfo';
 
 export default function Resume() {
   return (
@@ -41,7 +42,7 @@ export default function Resume() {
             </ul>
             
             <a 
-              href="/resume/khushal-singh-sankhla-resume.pdf" 
+              href={personalInfo.resume} 
               target="_blank" 
               rel="noreferrer" 
               className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/20 rounded-xl hover:bg-primary/20 transition-colors font-bold"
@@ -60,7 +61,7 @@ export default function Resume() {
             <div className="absolute inset-0 bg-background/95 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
               <p className="text-text-primary mb-4 font-bold">View Full Resume</p>
               <a 
-                href="/resume/khushal-singh-sankhla-resume.pdf" 
+                href={personalInfo.resume} 
                 target="_blank" 
                 rel="noreferrer"
                 className="px-6 py-2 bg-primary text-background rounded-lg font-bold"
@@ -70,7 +71,7 @@ export default function Resume() {
             </div>
             
             <iframe 
-              src="/resume/khushal-singh-sankhla-resume.pdf#view=FitH" 
+              src={`${personalInfo.resume}#view=FitH`} 
               title="Resume Preview"
               className="w-full h-full border-0"
             />

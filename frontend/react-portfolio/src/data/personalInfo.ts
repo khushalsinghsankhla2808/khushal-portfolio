@@ -6,6 +6,7 @@ export const personalInfo = {
   phone: "+91-7976349979",
   linkedin: "https://linkedin.com/in/khushal-singh-sankhla",
   github: "https://github.com/khushalsinghsankhla2808",
+  resume: "/resume/khushal-singh-sankhla-resume.pdf",
   motto:
     "Transforming Data into Decisions. Building Technology that Creates Impact.",
   summary:

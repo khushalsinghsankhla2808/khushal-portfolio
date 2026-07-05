@@ -4,6 +4,7 @@ import { Menu, X, Download } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
+import { personalInfo } from '../../data/personalInfo';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const updateScroll = () => {
       const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) setScrolled(isScrolled);
+      setScrolled(isScrolled);
 
       const sections = ['home', 'about', 'skills', 'experience', 'projects', 'certifications', 'contact'];
       let current = 'home';
@@ -28,12 +31,20 @@ export default function Navbar() {
       }
       if (window.scrollY < 100) current = 'home';
       setActiveSection(current);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    updateScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '/#home', id: 'home' },
@@ -63,8 +74,10 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link to="/" className="relative group flex items-center shrink-0">
             <img 
-              src="/logo.png" 
+              src="/logo.webp" 
               alt="Khushal Singh Sankhla Logo" 
+              width={1024}
+              height={682}
               className={clsx(
                 "relative w-auto object-contain transition-all duration-500",
                 scrolled ? "h-8" : "h-12"
@@ -109,15 +122,15 @@ export default function Navbar() {
         {/* Right Side: Socials & Resume */}
         <div className="hidden lg:flex items-center gap-4 shrink-0">
           <div className="flex items-center gap-3 pr-4 border-r border-border">
-            <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" data-cursor="hover" className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all">
+            <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all">
               <FaGithub size={18} />
             </a>
-            <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" data-cursor="hover" className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
+            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
               <FaLinkedin size={18} />
             </a>
           </div>
           <a 
-            href="/resume/khushal-singh-sankhla-resume.pdf" 
+            href={personalInfo.resume} 
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="hover"
@@ -129,7 +142,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <div className="xl:hidden flex items-center shrink-0">
-          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" className="text-text-primary p-2 bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors">
+          <button onClick={() => setIsOpen(!isOpen)} data-cursor="hover" aria-label="Toggle mobile menu" aria-expanded={isOpen} className="text-text-primary p-2 bg-white/5 rounded-full border border-borders hover:bg-white/10 transition-colors">
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -161,15 +174,15 @@ export default function Navbar() {
             ))}
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-6">
-                <a href="https://github.com/khushalsinghsankhla2808" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-text-primary">
+                <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-text-secondary hover:text-text-primary">
                   <FaGithub size={24} />
                 </a>
-                <a href="https://linkedin.com/in/khushal-singh-sankhla" target="_blank" rel="noreferrer" data-cursor="hover" className="text-text-secondary hover:text-primary">
+                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-text-secondary hover:text-primary">
                   <FaLinkedin size={24} />
                 </a>
               </div>
               <a 
-                href="/resume/khushal-singh-sankhla-resume.pdf" 
+                href={personalInfo.resume} 
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"

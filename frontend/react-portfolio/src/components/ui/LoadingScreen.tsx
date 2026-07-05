@@ -8,16 +8,16 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
     let currentProgress = 0;
     const interval = setInterval(() => {
       // Accelerate towards the end
-      const increment = currentProgress > 80 ? 2 : Math.floor(Math.random() * 15) + 5;
+      const increment = currentProgress > 80 ? 6 : Math.floor(Math.random() * 25) + 15;
       currentProgress += increment;
       
       if (currentProgress >= 100) {
         currentProgress = 100;
         clearInterval(interval);
-        setTimeout(onComplete, 400); // short pause at 100%
+        setTimeout(onComplete, 100); // reduced pause at 100%
       }
       setProgress(currentProgress);
-    }, 120);
+    }, 15); // accelerated from 120ms to 15ms
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -40,7 +40,9 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         className="relative z-10 mb-16"
       >
         <img 
-          src="/logo.png" 
+          src="/logo.webp" 
+          width={1024}
+          height={682}
           className="h-14 md:h-20 w-auto object-contain" 
         />
       </motion.div>

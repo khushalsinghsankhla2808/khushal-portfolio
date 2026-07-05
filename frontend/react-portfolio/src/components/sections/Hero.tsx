@@ -82,8 +82,8 @@ export default function Hero() {
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6 mb-12">
             <a 
-              href="/resume/khushal-singh-sankhla-resume.pdf" 
-              download="khushal-singh-sankhla-resume.pdf"
+              href={personalInfo.resume} 
+              download={personalInfo.resume.split('/').pop()}
               className="group relative px-8 py-4 rounded-full font-bold text-base text-white bg-linear-to-r from-primary to-secondary shadow-[0_0_20px_var(--color-glow)] hover:shadow-[0_0_30px_var(--color-glow)] flex items-center gap-3 transition-all duration-300 hover:scale-[1.03]"
             >
               <span className="relative z-10">Download Resume</span>
@@ -91,13 +91,13 @@ export default function Hero() {
             </a>
 
             <div className="flex items-center gap-4">
-              <a href="#about" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-primary hover:bg-white/10 transition-colors duration-300 group hover:scale-[1.03]">
+              <a href="#about" aria-label="Scroll to About section" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-primary hover:bg-white/10 transition-colors duration-300 group hover:scale-[1.03]">
                 <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform text-primary" />
               </a>
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-text-primary transition-colors duration-300 hover:scale-[1.03]">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-text-primary transition-colors duration-300 hover:scale-[1.03]">
                 <FaGithub size={22} />
               </a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-300 hover:scale-[1.03]">
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="w-14 h-14 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-primary transition-colors duration-300 hover:scale-[1.03]">
                 <FaLinkedin size={22} />
               </a>
             </div>
@@ -116,8 +116,10 @@ export default function Hero() {
             <div className="w-full h-full rounded-full overflow-hidden bg-cards relative flex items-center justify-center">
               <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent z-10" />
               <img 
-                src="/Profile.png" 
+                src="/Profile.webp" 
                 alt="Khushal Singh Sankhla" 
+                width={681}
+                height={1024}
                 className="w-full h-full object-cover object-top relative z-0 transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>

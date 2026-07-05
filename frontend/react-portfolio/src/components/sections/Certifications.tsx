@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { certifications, type Certification } from '../../data/certs';
 import { Award, ShieldCheck, Rocket, ExternalLink, X, Database, Activity, CheckCircle2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import clsx from 'clsx';
 
 export default function Certifications() {
@@ -9,11 +9,16 @@ export default function Certifications() {
   const marqueeItems = [...certifications, ...certifications, ...certifications];
 
   const [hoveredCert, setHoveredCert] = useState<Certification | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
+  const hoverX = useMotionValue(0);
+  const hoverY = useMotionValue(0);
+  const springX = useSpring(hoverX, { stiffness: 400, damping: 35, mass: 0.5 });
+  const springY = useSpring(hoverY, { stiffness: 400, damping: 35, mass: 0.5 });
+
   const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
+    hoverX.set(e.clientX + 20);
+    hoverY.set(e.clientY + 20);
   };
 
   const getIcon = (title: string) => {
@@ -79,6 +84,15 @@ export default function Certifications() {
             return (
               <div 
                 key={`${cert.title}-${idx}`} 
+                tabIndex={0}
+                role="button"
+                aria-label={`View certification: ${cert.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedCert(cert);
+                  }
+                }}
                 onMouseEnter={() => setHoveredCert(cert)}
                 onMouseLeave={() => setHoveredCert(null)}
                 onMouseMove={handleMouseMove}
@@ -150,10 +164,10 @@ export default function Certifications() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="hidden md:block fixed z-100 pointer-events-none"
+            className="hidden md:block fixed z-100 pointer-events-none left-0 top-0"
             style={{
-              left: mousePos.x + 20,
-              top: mousePos.y + 20,
+              x: springX,
+              y: springY,
             }}
           >
             <div className="p-5 bg-cards/95 backdrop-blur-xl border border-borders rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.9)] w-[400px]">
@@ -171,7 +185,7 @@ export default function Certifications() {
               
               {hoveredCert.image && (
                 <div className="relative rounded-xl overflow-hidden shadow-lg border border-borders/30">
-                   <img src={hoveredCert.image} alt="Certificate Preview" className="w-full h-auto object-contain" loading="lazy" />
+                   <img src={hoveredCert.image} alt="Certificate Preview" width={400} height={285} className="w-full h-auto object-contain" loading="lazy" />
                 </div>
               )}
             </div>
@@ -200,6 +214,7 @@ export default function Certifications() {
             >
               <button 
                 onClick={() => setSelectedCert(null)}
+                aria-label="Close certification details"
                 className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-text-primary hover:bg-white/20 transition-colors"
               >
                 <X size={24} />
@@ -215,7 +230,7 @@ export default function Certifications() {
               </div>
 
               {selectedCert.image && (
-                <img src={selectedCert.image} alt="Certificate Preview" className="w-full h-auto rounded-xl shadow-lg border border-borders/30" loading="lazy" />
+                <img src={selectedCert.image} alt="Certificate Preview" width={400} height={285} className="w-full h-auto rounded-xl shadow-lg border border-borders/30" loading="lazy" />
               )}
             </motion.div>
           </motion.div>

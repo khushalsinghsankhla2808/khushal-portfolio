@@ -16,28 +16,28 @@ export const certifications: Certification[] = [
     issueDate: "Jun 2026",
     credentialId: "PENDING",
     verifyUrl: "#",
-    image: "/Certificates images/Data Analytics Essentiqal.png",
+    image: "/Certificates images/Data Analytics Essentiqal.webp",
   },
   {
     title: "Data Analytics Projects",
     issuer: "Simplilearn Skillup",
     status: "Earned",
     issueDate: "Jul 2026",
-    image: "/Certificates images/Data Analytics Projects.png",
+    image: "/Certificates images/Data Analytics Projects.webp",
   },
   {
     title: "Manage and Secure Power BI",
     issuer: "Microsoft Learn",
     status: "Earned",
     issueDate: "May 2026",
-    image: "/Certificates images/Manage and secure Power BI.png",
+    image: "/Certificates images/Manage and secure Power BI.webp",
   },
   {
     title: "Manage a Microsoft Fabric Environment",
     issuer: "Microsoft Learn",
     status: "Earned",
     issueDate: "Jun 2026",
-    image: "/Certificates images/Manage a Microsoft Fabric environment.png",
+    image: "/Certificates images/Manage a Microsoft Fabric environment.webp",
   },
   {
     title: "Implement Real-Time Intelligence with Microsoft Fabric",
@@ -45,19 +45,19 @@ export const certifications: Certification[] = [
     status: "Earned",
     issueDate: "Jun 2026",
     image:
-      "/Certificates images/Implement Real-Time Intelligence with Microsoft Fabric.png",
+      "/Certificates images/Implement Real-Time Intelligence with Microsoft Fabric.webp",
   },
   {
     title: "Explore prebuilt Microsoft 365 Copilot agents",
     issuer: "Microsoft Learn",
     status: "Earned",
     image:
-      "/Certificates images/Explore prebuilt Microsoft 365 Copilot agents.png",
+      "/Certificates images/Explore prebuilt Microsoft 365 Copilot agents.webp",
   },
   {
     title: "Getting Started With Data Analytics",
     issuer: "Microsoft Learn",
     status: "Earned",
-    image: "/Certificates images/Getting Started With Data Analytics.png",
+    image: "/Certificates images/Getting Started With Data Analytics.webp",
   },
 ];

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { projects } from '../../data/projects';
 import { ExternalLink, Search, Star, Clock, X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
@@ -11,11 +11,16 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
+  const hoverX = useMotionValue(0);
+  const hoverY = useMotionValue(0);
+  const springX = useSpring(hoverX, { stiffness: 400, damping: 35, mass: 0.5 });
+  const springY = useSpring(hoverY, { stiffness: 400, damping: 35, mass: 0.5 });
+
   const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
+    hoverX.set(e.clientX + 20);
+    hoverY.set(e.clientY + 20);
   };
 
   const filteredProjects = useMemo(() => {
@@ -104,6 +109,15 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, delay: idx * 0.05, ease: "easeOut" }}
               data-cursor="hover"
+              tabIndex={0}
+              role="button"
+              aria-label={`View details of project: ${project.title}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedProject(project.coverImage || null);
+                }
+              }}
               onMouseEnter={() => setHoveredProject(project.coverImage || null)}
               onMouseLeave={() => setHoveredProject(null)}
               onMouseMove={handleMouseMove}
@@ -212,14 +226,14 @@ export default function Projects() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="hidden md:block fixed z-100 pointer-events-none"
+            className="hidden md:block fixed z-100 pointer-events-none left-0 top-0"
             style={{
-              left: mousePos.x + 20,
-              top: mousePos.y + 20,
+              x: springX,
+              y: springY,
             }}
           >
             <div className="p-3 bg-cards/95 backdrop-blur-xl border border-borders rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-              <img src={hoveredProject} alt="Project Preview" className="w-[400px] h-auto rounded-xl object-contain shadow-lg" loading="lazy" />
+              <img src={hoveredProject} alt="Project Preview" width={400} height={225} className="w-[400px] h-auto rounded-xl object-contain shadow-lg" loading="lazy" />
             </div>
           </motion.div>
         )}
@@ -246,11 +260,12 @@ export default function Projects() {
             >
               <button 
                 onClick={() => setSelectedProject(null)}
+                aria-label="Close project preview"
                 className="absolute -top-12 right-0 p-2 bg-white/10 rounded-full text-text-primary hover:bg-white/20 transition-colors"
               >
                 <X size={24} />
               </button>
-              <img src={selectedProject} alt="Project Preview" className="w-full h-auto rounded-xl shadow-lg" loading="lazy" />
+              <img src={selectedProject} alt="Project Preview" width={400} height={225} className="w-full h-auto rounded-xl shadow-lg" loading="lazy" />
             </motion.div>
           </motion.div>
         )}
