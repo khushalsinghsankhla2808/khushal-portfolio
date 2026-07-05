@@ -454,9 +454,8 @@ export default function CaseStudy() {
     enter: 'top center',
     leave: 'bottom center',
     sync: true,
-    onUpdate: (progress) => {
-      // Divide progress into 4 beats (0 to 3)
-      const beatIndex = Math.min(Math.floor(progress * 4), 3);
+    beatCount: 4,
+    onUpdate: (_progress, _velocity, beatIndex) => {
       setActiveBeat(beatIndex);
     },
   });

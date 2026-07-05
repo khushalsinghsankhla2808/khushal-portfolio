@@ -9,8 +9,9 @@ export interface UseScrollScrubOptions {
   enter?: string | number | ((self: any) => any);
   leave?: string | number | ((self: any) => any);
   sync?: boolean | number | string;
-  onUpdate?: (progress: number, velocity: number) => void;
+  onUpdate?: (progress: number, velocity: number, beatIndex: number) => void;
   animation?: any;
+  beatCount?: number;
 }
 
 export function useScrollScrub(
@@ -40,6 +41,8 @@ export function useScrollScrub(
       }
     }
 
+    const beatCount = options.beatCount ?? 4;
+
     const observer = onScroll({
       target,
       container: resolvedContainer,
@@ -49,7 +52,8 @@ export function useScrollScrub(
       sync,
       onUpdate: (self) => {
         if (onUpdate) {
-          onUpdate(self.progress, self.velocity);
+          const beatIndex = Math.min(Math.floor(self.progress * beatCount), beatCount - 1);
+          onUpdate(self.progress, self.velocity, beatIndex);
         }
       },
     });
