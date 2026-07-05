@@ -57,9 +57,10 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         </div>
         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden relative">
           <motion.div 
-            className="absolute top-0 left-0 h-full bg-primary"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
+            className="absolute top-0 left-0 h-full w-full bg-primary origin-left"
+            style={{ transformOrigin: 'left' }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: progress / 100 }}
             transition={{ ease: "linear", duration: 0.2 }}
           />
         </div>
