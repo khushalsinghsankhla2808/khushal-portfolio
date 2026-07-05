@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khushalsinghsankhla2808.github.io/sitemap.xml
