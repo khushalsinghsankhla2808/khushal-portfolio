@@ -78,6 +78,8 @@ export default function Navbar() {
               alt="Khushal Singh Sankhla Logo" 
               width={1024}
               height={682}
+              fetchPriority="high"
+              decoding="sync"
               className={clsx(
                 "relative w-auto object-contain transition-all duration-500",
                 scrolled ? "h-8" : "h-12"

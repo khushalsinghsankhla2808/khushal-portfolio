@@ -120,6 +120,8 @@ export default function Hero() {
                 alt="Khushal Singh Sankhla" 
                 width={681}
                 height={1024}
+                fetchPriority="high"
+                decoding="sync"
                 className="w-full h-full object-cover object-top relative z-0 transform group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>

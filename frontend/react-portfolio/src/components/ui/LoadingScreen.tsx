@@ -43,6 +43,8 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           src="/logo.webp" 
           width={1024}
           height={682}
+          fetchPriority="high"
+          decoding="sync"
           className="h-14 md:h-20 w-auto object-contain" 
         />
       </motion.div>
