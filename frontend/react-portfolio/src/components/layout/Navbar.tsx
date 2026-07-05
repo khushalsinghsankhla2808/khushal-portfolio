@@ -87,7 +87,7 @@ export default function Navbar() {
             />
           </Link>
           <div className={clsx("flex flex-col justify-center transition-all duration-500 overflow-hidden", scrolled ? "w-0 opacity-0 md:w-auto md:opacity-100 md:ml-2" : "w-auto opacity-100 ml-2")}>
-            <Link to="/" className="font-bold text-[15px] md:text-lg leading-tight text-foreground hover:text-primary transition-all">
+            <Link to="/" className="font-bold text-[15px] md:text-lg leading-tight text-text-primary hover:text-primary transition-all">
               Khushal Singh Sankhla
             </Link>
           </div>
@@ -103,8 +103,8 @@ export default function Navbar() {
                 className={clsx(
                   "text-sm font-medium transition-colors relative px-4 py-2 group",
                   activeSection === link.id 
-                    ? "text-foreground" 
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-text-primary" 
+                    : "text-text-muted hover:text-text-primary"
                 )}
               >
                 {link.name}
@@ -124,10 +124,10 @@ export default function Navbar() {
         {/* Right Side: Socials & Resume */}
         <div className="hidden lg:flex items-center gap-4 shrink-0">
           <div className="flex items-center gap-3 pr-4 border-r border-border">
-            <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all">
+            <a href={personalInfo.github} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="GitHub Profile" className="text-text-muted hover:text-text-primary hover:scale-110 transition-all">
               <FaGithub size={18} />
             </a>
-            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-muted-foreground hover:text-primary hover:scale-110 transition-all">
+            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" data-cursor="hover" aria-label="LinkedIn Profile" className="text-text-muted hover:text-primary hover:scale-110 transition-all">
               <FaLinkedin size={18} />
             </a>
           </div>

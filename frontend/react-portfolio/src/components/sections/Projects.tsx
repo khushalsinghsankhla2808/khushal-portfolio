@@ -158,21 +158,23 @@ export default function Projects() {
                         target="_blank" 
                         rel="noopener noreferrer" 
                         onClick={(e) => e.stopPropagation()}
+                        className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-text-primary hover:bg-white/20 transition-all shrink-0"
+                        title="Live Demo"
+                        aria-label={`Live Demo of ${project.title}`}
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      onClick={(e) => e.stopPropagation()}
                       className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-text-primary hover:bg-white/20 transition-all shrink-0"
-                      title="Live Demo"
+                      title="GitHub Repository"
+                      aria-label={`GitHub Repository of ${project.title}`}
                     >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    onClick={(e) => e.stopPropagation()}
-                    className="w-10 h-10 flex items-center justify-center bg-white/5 border border-borders rounded-full text-text-secondary hover:text-text-primary hover:bg-white/20 transition-all shrink-0"
-                    title="GitHub Repository"
-                  >
-                    <FaGithub size={18} />
+                      <FaGithub size={18} />
                     </a>
                   </div>
                 </div>
