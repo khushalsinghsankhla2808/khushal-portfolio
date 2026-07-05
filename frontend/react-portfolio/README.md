@@ -1,32 +1,30 @@
-# React + TypeScript + Vite
+# Khushal Singh Sankhla | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the codebase for my personal portfolio web application. 
 
-Currently, two official plugins are available:
+A comprehensive overview of my work, projects, educational qualifications, technical skills, and details regarding performance/crawling optimizations can be found in the main repository:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+👉 **[Root Repository README](../../README.md)**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Project Development & Setup
 
-## Expanding the Oxlint configuration
+### Requirements
+*   Node.js (v18+)
+*   npm
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Installation
+1. Navigate to this directory:
+   ```bash
+   cd frontend/react-portfolio
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Scripts
+*   **Development Server:** `npm run dev`
+*   **Build Production:** `npm run build`
+*   **Linter Analysis:** `npm run lint`
