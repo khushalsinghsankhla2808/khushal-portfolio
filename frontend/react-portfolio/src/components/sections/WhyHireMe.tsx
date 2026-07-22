@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useMotionTemplate, useSpring, useInView } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Check } from 'lucide-react';
+import BorderGlow from '../ui/BorderGlow';
 
 interface Reason {
   title: string;
@@ -88,58 +89,37 @@ function CountUp({ value, duration = 1.5 }: { value: number; duration?: number }
 }
 
 function Card({ title, desc, index }: { title: string; desc: string; index: number }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 200 };
-  const glowX = useSpring(mouseX, springConfig);
-  const glowY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      whileHover={{ y: -8 }}
-      onMouseMove={handleMouseMove}
-      className="group relative flex items-start gap-4 p-7 md:p-8 bg-cards/30 border border-borders rounded-2xl backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-cards/50 hover:shadow-[0_20px_40px_rgba(168,85,247,0.15)] overflow-hidden"
+      whileHover={{ y: -6 }}
     >
-      {/* Radial glow that follows the cursor */}
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              200px circle at ${glowX}px ${glowY}px,
-              rgba(168, 85, 247, 0.15),
-              transparent 80%
-            )
-          `
-        }}
-      />
-      
-      {/* Premium Check Icon with hover micro-interaction */}
-      <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:rotate-6 transition-all duration-300 shrink-0">
-        <Check className="w-5 h-5 stroke-[2.5]" />
-      </div>
+      <BorderGlow
+        borderRadius={16}
+        glowRadius={25}
+        edgeSensitivity={15}
+        backgroundColor="rgba(31, 22, 51, 0.4)"
+        colors={['#a855f7', '#d946ef', '#38bdf8']}
+        className="h-full"
+      >
+        <div className="group relative flex items-start gap-4 p-7 md:p-8">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:rotate-6 transition-all duration-300 shrink-0">
+            <Check className="w-5 h-5 stroke-[2.5]" />
+          </div>
 
-      <div className="relative z-10">
-        <h3 className="text-[18px] md:text-[20px] font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-primary">
-          {title}
-        </h3>
-        <p className="text-[15px] leading-[1.7] text-text-secondary">
-          {desc}
-        </p>
-      </div>
+          <div className="relative z-10">
+            <h3 className="text-[18px] md:text-[20px] font-semibold text-text-primary mb-2 transition-colors duration-300 group-hover:text-primary">
+              {title}
+            </h3>
+            <p className="text-[15px] leading-[1.7] text-text-secondary">
+              {desc}
+            </p>
+          </div>
+        </div>
+      </BorderGlow>
     </motion.div>
   );
 }

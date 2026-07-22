@@ -12,7 +12,6 @@ const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(point
  * Automatically disables itself on touch/coarse-pointer devices.
  */
 export default function CustomCursor() {
-  if (isTouchDevice) return null;
 
   const [enabled, setEnabled] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -74,7 +73,7 @@ export default function CustomCursor() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!enabled) return null;
+  if (!enabled || isTouchDevice) return null;
 
   return (
     <div

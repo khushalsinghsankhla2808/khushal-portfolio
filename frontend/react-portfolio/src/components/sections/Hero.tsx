@@ -4,6 +4,7 @@ import { Download, ChevronRight } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo } from '../../data/personalInfo';
 import { useInfiniteLoop } from '../../animations';
+import BorderGlow from '../ui/BorderGlow';
 
 const ROLES = [
   "Data Analyst",
@@ -151,20 +152,42 @@ export default function Hero() {
             initial={{ opacity: 0, y: -20, rotate: -5 }}
             animate={{ opacity: 1, y: 0, rotate: -5 }}
             transition={{ delay: 2.4, duration: 0.8, ease: "easeOut" }}
-            className="absolute top-4 right-0 z-20 glass-card rounded-2xl p-4"
+            className="absolute top-4 right-0 z-20"
           >
-            <div className="text-2xl font-bold text-text-primary leading-none mb-1">10+</div>
-            <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Projects Completed</div>
+            <BorderGlow
+              borderRadius={16}
+              glowRadius={20}
+              edgeSensitivity={25}
+              backgroundColor="rgba(31, 22, 51, 0.75)"
+              colors={['#c084fc', '#f472b6', '#38bdf8']}
+              animated={true}
+            >
+              <div className="p-4">
+                <div className="text-2xl font-bold text-text-primary leading-none mb-1">10+</div>
+                <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">Projects Completed</div>
+              </div>
+            </BorderGlow>
           </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20, rotate: 5 }}
             animate={{ opacity: 1, y: 0, rotate: 5 }}
             transition={{ delay: 2.6, duration: 0.8, ease: "easeOut" }}
-            className="absolute bottom-4 left-0 z-20 glass-card rounded-2xl p-4"
+            className="absolute bottom-4 left-0 z-20"
           >
-            <div className="text-2xl font-bold text-text-primary leading-none mb-1">13+</div>
-            <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">GitHub Repos</div>
+            <BorderGlow
+              borderRadius={16}
+              glowRadius={20}
+              edgeSensitivity={25}
+              backgroundColor="rgba(31, 22, 51, 0.75)"
+              colors={['#38bdf8', '#c084fc', '#f472b6']}
+              animated={true}
+            >
+              <div className="p-4">
+                <div className="text-2xl font-bold text-text-primary leading-none mb-1">13+</div>
+                <div className="text-[10px] uppercase tracking-wider text-text-secondary font-medium">GitHub Repos</div>
+              </div>
+            </BorderGlow>
           </motion.div>
         </motion.div>
 
